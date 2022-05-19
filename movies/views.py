@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
-# Create your views here.
+
+def movie_home(request):
+    pass
+
+def movie_list(request):
+    pass
+
+def movie_detail(request):
+    pass
+
+
