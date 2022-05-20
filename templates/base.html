@@ -11,7 +11,8 @@
   <nav class="navbar bg-light container-fluid">
     <div>
       <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
-        <img src="/image/422995.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top"> 방구석 세계여행
+        {% load static %}
+        <img src="{% static '422995.jpg' %}" alt="" width="30" height="30" class="d-inline-block align-text-top"> 방구석 세계여행
       </a>
     </div>
     <div>
