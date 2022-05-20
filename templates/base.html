@@ -8,14 +8,33 @@
   <title>Document</title>
 </head>
 <body>
-  <div>
-    <h2>
-      네브바 만들기
-    </h2>
+  <nav class="navbar bg-light container-fluid">
+    <div>
+      <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
+        <img src="/image/422995.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top"> 방구석 세계여행
+      </a>
+    </div>
+    <div>
+      {% if request.user.is_authenticated %}
+        <a class="btn" href="{% url 'movies:movie_home' %}">HOME</a>
+        <a class="btn" href="{% url 'community:review_list' %}">COMMUNITY</a>
+        <a class="btn" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
+        <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; width: 200px; white-space: nowrap;">
+          {% csrf_token %}
+          <input  class="btn" type="submit" value="LOGOUT">
+        </form>
+      {% else %}
+        <a class="btn" href="{% url 'movies:movie_home' %}">HOME</a>
+        <a class="btn"  href="{% url 'community:review_list' %}">COMMUNITY</a>
+        <a class="btn"  href="{% url 'accounts:login' %}">LOGIN</a>
+        <a class="btn"  href="{% url 'accounts:signup' %}">SINGUP</a>
+      {% endif %}
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock content %}
 
-    {% block content %}
-    {% endblock content %}
-  </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

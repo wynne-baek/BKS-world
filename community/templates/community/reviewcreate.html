@@ -2,5 +2,8 @@
 
 {% block content %}
 <h1>review create</h1>
-
+<form action="{% url 'community:review_create' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit">
 {% endblock content %}

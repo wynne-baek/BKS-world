@@ -2,6 +2,23 @@
 
 {% block content %}
 <h1>movie detail</h1>
-<p>{{ movie.title }}</p>
-<p>{{ movie.overview }}</p>
+<div class="card mb-3" style="display:flex;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}" class="img-fluid rounded-start" alt="" style="width:500px; height:500px;" >
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p>{{ movie.title }}</p>
+        <p>{{ movie.country }}</p>
+        <p>{{ movie.genres }}</p>
+        <p>{{ movie.release_date }}</p>
+        <p>{{ movie.popularity }}</p>
+        <p>{{ movie.vote_count }}</p>
+        <p>{{ movie.vote_average }}</p>
+        <p>{{ movie.overview }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}

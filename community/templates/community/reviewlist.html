@@ -2,5 +2,28 @@
 
 {% block content %}
 <h1>review list(community index)</h1>
+{% for review in reviews %}
+<p>작성자 : <a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
+<p>REVIEW NUMBER: {{ review.pk }}</p>
+<p>REVIEW TITLE: {{ review.title }}</p>
+<p>MOVIE TITLE: {{ review.movie_title }}</p>
+<p>REVIEW CONTENT: {{ review.content }}</p>
+<form id="like-form" data-review-id="{{ review.pk }}" class="d-inline">
+  {% csrf_token %}
+  {% if user in review.like_users.all %}
+    <button id="like-{{ review.pk }}">좋아요 취소</button>
+  {% else %}
+    <button id="like-{{ review.pk }}">좋아요</button>
+  {% endif %}
+</form>
+<p>
+  <span id="like-count-{{ review.pk }}">
+    {{ review.like_users.all|length }}
+  </span>
+  명이 이 글을 좋아합니다.
+</p>
+<a href="{% url 'community:review_detail' review.pk %}">[detail]</a>
+<hr>
+{% endfor %}
 
 {% endblock content %}

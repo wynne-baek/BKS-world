@@ -41,7 +41,7 @@ def review_detail(request, review_pk):
     return render(request, 'community/reviewdetail.html', context)
 
 @require_POST
-def comment_create(request, review_pk):
+def review_comment_create(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
