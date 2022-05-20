@@ -1,12 +1,117 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>movie home</h1>
-<div style= "display: flex; justify-content: center;">
-  <form action="{% url 'movies:search_movie' %}" method="GET">
-    <label for="search">국가 검색: </label>
-    <input type="text" name="search" id="search">
-    <input type="submit" value="검색">
-  </form>
+{% load static %}
+
+<h1 class="mx-4">movie home</h1>
+
+{% comment %} 영화 검색창 {% endcomment %}
+{% comment %} background img 필요 {% endcomment %}
+<div
+  class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
+  style="background-image: url('https://www.trillenium.com/images/travel-01.jpg'); width: 100%;"
+>
+  <h2 class="text-dark">Find Your Destination</h2>
+
+  <div style= "display: flex; justify-content: center; margin: 100px auto; background-image: url=({% static 'main_top.jpeg' %});">
+    <form action="{% url 'movies:search_movie' %}" method="GET">
+      <label for="search">도착지: </label>
+      <input type="text" name="search" id="search">
+      <input type="submit" value="검색">
+    </form>
+  </div>
 </div>
+
+<hr class="my-4">
+{% comment %} 도시별 영화 추천 {% endcomment %}
+<div class="mx-4">
+  <h3 class="my-2">도시별 영화 추천</h3>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mx-5 my-2">
+    <div class="col ml-2">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">빛의 도시, 파리</h5>
+        <img src="{% static 'paris.jpg' %}" height="" class="card-img-top" alt="빛의 도시, 파리">
+        <div>
+          <a class="btn my-4">Go to Paris</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">Big Apple, NY</h5>
+        <img src="{% static 'NY.jpg' %}" class="card-img-top" alt="Big Apple, NY">
+        <div>
+          <a class="btn my-4" href="http://127.0.0.1:8000/movies/list/?search=%EB%AF%B8%EA%B5%AD">Go to New York</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">발리우드 뭄바이</h5>
+        <img src="{% static 'India.jpeg' %}" class="card-img-top" alt="발리우드 뭄바이">
+        <div>
+          <a class="btn my-4">Go to Mumbai</a>
+        </div>
+      </div>
+    </div>
+    <div class="col mr-2">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">열정의 리우데자네이루</h5>
+        <img src="{% static 'Rio.jpeg' %}" class="card-img-top" alt="열정의 리우데자네이루">
+        <div>
+          <a class="btn my-4">Go to Rio de Janeiro</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+{% comment %} 패키지 추천 {% endcomment %}
+<div class="mx-4">
+  <h3 class="my-2">패키지 영화 추천</h3>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mx-5 my-2">
+    <div class="col ml-2">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">분노의 질주 시리즈</h5>
+        <img src="{% static 'paris.jpg' %}" height="" class="card-img-top mb-3" alt="빛의 도시, 파리">
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-2">Title</a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">마블 시리즈</h5>
+        <img src="{% static 'NY.jpg' %}" class="card-img-top mb-3" alt="Big Apple, NY">
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-2">Title</a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">디즈니 공주 시리즈</h5>
+        <img src="{% static 'India.jpeg' %}" class="card-img-top mb-3" alt="발리우드 뭄바이">
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-2">Title</a>
+      </div>
+    </div>
+    <div class="col mr-2">
+      <div class="card text-center h-100">
+        <h5 class="card-title my-3">007 시리즈</h5>
+        <img src="{% static 'Rio.jpeg' %}" class="card-img-top mb-3" alt="열정의 리우데자네이루">
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-1">Title</a>
+        <a href="" class="mb-2">Title</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock content %}

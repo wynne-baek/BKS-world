@@ -9,6 +9,8 @@ def search_movie(request):
     search = request.GET.get('search', '')
     if search:
         movies = Movie.objects.filter(country=f'{search}')
+    else:
+        movies = Movie.objects.all()
     # 1. 로그인 여부 확인
     # 2. 로그인 되어 있을 경우, 검색어 쿼리에 넣어서 해당 국가 정보가 들어있는 영화만 보여줌
     if request.user.is_authenticated:
