@@ -2,5 +2,10 @@
 
 {% block content %}
 <h1>movie list</h1>
-
+{% for movie in movies %}
+  <p>검색된 게시글의 제목: {{ movie.title }}</p>
+  <p>검색된 게시글의 내용: {{ movie.content }}</p>
+  <a class="btn" href="{% url 'movies:movie_detail' movie.pk %}">DETAIL</a>
+  <hr>
+{% endfor %}
 {% endblock content %}

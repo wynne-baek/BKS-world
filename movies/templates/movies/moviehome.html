@@ -2,5 +2,9 @@
 
 {% block content %}
 <h1>movie home(main page)</h1>
-
+<form action="{% url 'movies:search_movie' %}" method="GET">
+  <label for="search">검색어: </label>
+  <input type="text" name="search" id="search">
+  <input type="submit" value="검색해주세요.">
+</form>
 {% endblock content %}
