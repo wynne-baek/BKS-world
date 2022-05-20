@@ -1,12 +1,82 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>profile</h1>
+<h1>{{ person.username }}님의 프로필 페이지</h1>
+{% with following=person.following.all follower=person.follower.all %}
+  <div>
+    <div>
+      팔로잉 :
+      <span id="following-count">
+        {{ following|length }}
+      </span>
+      / 팔로워 :
+      <span id="follower-count">
+        {{ follower|length }}
+      </span>
+    </div>
+    {% if request.user != person %}
+      <div>
+        <form data-person-id="{{ person.pk }}" id="follow-form">
+          {% csrf_token %}
+          {% if request.user in follower %}
+            <button id="followBtn" class="btn btn-primary">언팔로우</button>
+          {% else %}
+            <button id="followBtn" class="btn btn-outline-primary">팔로우</button>
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  </div>
+{% endwith %}
 
-{% endblock content %}
+<hr>
+
+<h2>{{ person.username }}님의 WATCHED LIST</h2>
+
+<hr>
+
+<h2>{{ person.username }}님의 MOVIE REVEIW</h2>
+  {% for review in person.review_set.all %}
+    <a href="{% url 'community:review_detail' review.pk %}">{{ forloop.counter }}번째 리뷰</a>
+    <p>MOVIE TITLE: {{ review.movie_title }}</p>
+    <P>MOVIE RATE: {{ review.rate }}</P>
+    <hr>
+  {% endfor %}
+
+
+
+{% endblock %}
+
+<hr>
 
 {% block script %}
 <script>
-  
+  const formTag = document.querySelector('#follow-form')
+
+  if (formTag) {
+    axios.defaults.xsrfCookieName = 'csrftoken'
+    axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
+    formTag.addEventListener('submit', function(event) {
+      event.preventDefault()
+      const personId = event.target.dataset.personId
+      const URL = `http://127.0.0.1:8000/accounts/${personId}/follow/`
+      axios.post(URL)
+      .then(res => {
+        const followerCount = res.data.follower_count
+        const followed = res.data.followed
+        const followBtn = document.querySelector('#followBtn')
+        const followerNum = document.querySelector('#follower-count')
+        if (followed === true) {
+          followBtn.value = '언팔로우'
+          followBtn.setAttribute('class', 'btn btn-primary')
+        } else {
+          followBtn.value = '팔로우'
+          followBtn.setAttribute('class', 'btn btn-outline-primary')
+        }
+        followerNum.innerText = followerCount
+      })
+    })
+  }
 </script>
 {% endblock script %}

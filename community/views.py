@@ -1,5 +1,5 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from .models import Review, Comment
 from .forms import ReviewForm, CommentForm
@@ -57,3 +57,20 @@ def review_comment_create(request, review_pk):
     }
     return render(request, 'community/reviewdetail.html', context)
 
+@require_POST
+def like(request, review_pk):
+    if request.user.is_authenticated:
+        review = get_object_or_404(Review, pk=review_pk)
+        user = request.user
+        if review.like_users.filter(pk=user.pk).exists():
+            review.like_users.remove(user)
+            liked = False
+        else:
+            review.like_users.add(user)
+            liked = True
+        context = {
+            'liked': liked,
+            'count': review.like_users.count(),
+        }
+        return JsonResponse(context)
+    return redirect('accounts:login')

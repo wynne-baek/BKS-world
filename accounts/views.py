@@ -67,21 +67,20 @@ def follow(request, user_pk):
         me = request.user
 
         # 나 자신은 팔로우 할 수 없다.
-        if you != me:
+        if me != you:
             # 이미 팔로우 한 상태에서 누르면 언팔로우
-            if you.followers.filter(pk=me.pk).exists():
-                you.followers.remove(me)
+            if you.follower.filter(pk=me.pk).exists():
+                you.follower.remove(me)
                 followed = False
             else:
                 # 팔로우
-                you.followers.add(me)
+                you.follower.add(me)
                 followed = True
 
-            follow_status = {
-                'followers_count': you.followers.count(),
-                'followings_count': you.followings.count(),
-                'followed': followed,
+        follow_status = {
+            'follower_count': you.follower.count(),
+            'following_count': you.following.count(),
+            'followed': followed,
             }
-            return JsonResponse(follow_status)
-        return redirect('accounts:profile', you.username)
-    return redirect('accounts:login')
+        return JsonResponse(follow_status)
+    return redirect('accounts:profile', you.username)

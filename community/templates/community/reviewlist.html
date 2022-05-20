@@ -2,6 +2,9 @@
 
 {% block content %}
 <h1>review list(community index)</h1>
+<a class="btn btn-primary" href="{% url 'community:review_create'%}">CREATE NEW REVIEW</a>
+<hr>
+
 {% for review in reviews %}
 <p>작성자 : <a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
 <p>REVIEW NUMBER: {{ review.pk }}</p>
@@ -25,5 +28,33 @@
 <a href="{% url 'community:review_detail' review.pk %}">[detail]</a>
 <hr>
 {% endfor %}
-
 {% endblock content %}
+
+{% block script %}
+  <script>
+    const likeForms = document.querySelectorAll('#like-form')
+    likeForms.forEach(form => {
+      axios.defaults.xsrfCookieName = 'csrftoken'
+      axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+      form.addEventListener('submit', function(event) {
+        event.preventDefault()
+        const reviewId = event.target.dataset.reviewId
+        const URL = `http://127.0.0.1:8000/community/${reviewId}/like/`
+        axios.post(URL)
+        .then(res => {
+          const count = res.data.count
+          const liked = res.data.liked
+          const likeBtn = document.querySelector(`#like-${reviewId}`)
+          const likeCount = document.querySelector(`#like-count-${reviewId}`)
+          if (liked) {
+            likeBtn.innerText = '좋아요 취소'
+          } else {
+            likeBtn.innerText = '좋아요'
+          }
+          likeCount.innerText = count
+        })
+      })
+    })
+
+  </script>
+{% endblock script %}
