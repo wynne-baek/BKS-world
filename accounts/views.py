@@ -84,3 +84,4 @@ def follow(request, user_pk):
             }
         return JsonResponse(follow_status)
     return redirect('accounts:profile', you.username)
+

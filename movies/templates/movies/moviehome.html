@@ -13,7 +13,7 @@
   <h3>Find Your Destination</h3>
 </div>
   <div class="mx-auto" style= "display: flex; justify-content: center; width: 300px; height:50px; margin-bottom: 100px;">
-    <form class="row g-3" action="{% url 'movies:search_movie' %}" method="GET">
+    <form class="row g-3" action="{% url 'movies:movie_search' %}" method="GET">
       <div class="col-auto">
         <label class="sr-only" for="search">Destination</label>
         <input type="text" class="form-control" name="search" id="search" placeholder="도착지를 입력하세요">
@@ -35,7 +35,7 @@
         <h5 class="card-title my-3">빛의 도시, 파리</h5>
         <img src="{% static 'paris.jpg' %}" height="" class="card-img-top" alt="빛의 도시, 파리">
         <div>
-          <a class="btn my-4">Go to Paris</a>
+          <a class="btn my-4" href="list/?search=프랑스">Go to Paris</a>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
         <h5 class="card-title my-3">발리우드 뭄바이</h5>
         <img src="{% static 'India.jpeg' %}" class="card-img-top" alt="발리우드 뭄바이">
         <div>
-          <a class="btn my-4">Go to Mumbai</a>
+          <a class="btn my-4" href="list/?search=인도">Go to Mumbai</a>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
         <h5 class="card-title my-3">열정의 리우데자네이루</h5>
         <img src="{% static 'Rio.jpeg' %}" class="card-img-top" alt="열정의 리우데자네이루">
         <div>
-          <a class="btn my-4">Go to Rio de Janeiro</a>
+          <a class="btn my-4" href="list/?search=브라질">Go to Rio de Janeiro</a>
         </div>
       </div>
     </div>
@@ -76,41 +76,40 @@
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mx-5 my-2">
     <div class="col ml-2">
       <div class="card text-center h-100">
-        <h5 class="card-title my-3">아직 끝나지 않은, 분노의 질주</h5>
+        <h5 class="card-title my-3">끝나지 않은, 분노의 질주</h5>
         <img src="{% static 'F&F.jpg' %}" height="" class="card-img-top mb-3" alt="빛의 도시, 파리">
-        <a href="" class="mb-1">분노의 질주: 더 맥시멈</a>
-        <a href="" class="mb-1">분노의 질주: 더 얼티메이트</a>
-        <a href="" class="mb-1">분노의 질주: 언리미티드</a>
+        <a href="{% url 'movies:movie_detail' 133 %}" class="mb-1">분노의 질주: 더 맥시멈</a>
+        <a href="{% url 'movies:movie_detail' 134 %}" class="mb-1">분노의 질주: 더 얼티메이트</a>
+        <a href="{% url 'movies:movie_detail' 5 %}" class="mb-1">분노의 질주: 언리미티드</a>
       </div>
     </div>
     <div class="col">
       <div class="card text-center h-100">
-        <h5 class="card-title my-3">꿈과 희망의 디즈니</h5>
+        <h5 class="card-title my-3">Manners Maketh Man</h5>
         <img src="{% static 'Disney.jpeg' %}" class="card-img-top mb-3" alt="Big Apple, NY">
-        <a href="" class="mb-1">Title</a>
-        <a href="" class="mb-1">Title</a>
-        <a href="" class="mb-1">Title</a>
-        <a href="" class="mb-2">Title</a>
+        <a href="{% url 'movies:movie_detail' 158 %}" class="mb-1">킹스맨: 시크릿 에이전트</a>
+        <a href="{% url 'movies:movie_detail' 159 %}" class="mb-1">킹스맨: 골든 서클</a>
+        <a href="{% url 'movies:movie_detail' 160 %}" class="mb-1">킹스맨: 퍼스트 에이전트</a>
       </div>
     </div>
     <div class="col">
       <div class="card text-center h-100">
         <h5 class="card-title my-3">해리포터와 마법의 세계로</h5>
         <img src="{% static 'HP.jpg' %}" class="card-img-top mb-3" alt="발리우드 뭄바이">
-        <a href="" class="mb-1">해리 포터와 마법사의 돌</a>
-        <a href="" class="mb-1">해리 포터와 비밀의 방</a>
-        <a href="" class="mb-1">해리 포터와 아즈카반의 죄수</a>
-        <a href="" class="mb-2">해리 포터와 불의 잔</a>
+        <a href="{% url 'movies:movie_detail' 153 %}" class="mb-1">해리 포터와 마법사의 돌</a>
+        <a href="{% url 'movies:movie_detail' 154 %}" class="mb-1">해리 포터와 비밀의 방</a>
+        <a href="{% url 'movies:movie_detail' 155 %}" class="mb-1">해리 포터와 아즈카반의 죄수</a>
+        <a href="{% url 'movies:movie_detail' 156 %}" class="mb-2">해리 포터와 불의 잔</a>
       </div>
     </div>
     <div class="col mr-2">
       <div class="card text-center h-100">
         <h5 class="card-title my-3">우리가 사랑한 스파이, 007</h5>
         <img src="{% static '007.jpg' %}" class="card-img-top mb-3" alt="열정의 리우데자네이루">
-        <a href="" class="mb-1">007 스카이폴</a>
-        <a href="" class="mb-1">007 언리미티드</a>
-        <a href="" class="mb-1">007 퀸텀 오브 솔러스</a>
-        <a href="" class="mb-2">007 노 타임 투 다이</a>
+        <a href="{% url 'movies:movie_detail' 105 %}" class="mb-1">007 언리미티드</a>
+        <a href="{% url 'movies:movie_detail' 127 %}" class="mb-1">007 퀸텀 오브 솔러스</a>        
+        <a href="{% url 'movies:movie_detail' 104 %}" class="mb-1">007 스카이폴</a>
+        <a href="{% url 'movies:movie_detail' 123 %}" class="mb-2">007 노 타임 투 다이</a>
       </div>
     </div>
   </div>

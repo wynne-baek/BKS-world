@@ -9,6 +9,13 @@
   <p>평점: {{ review.rate }}</p>
   <p>작성 시각: {{ review.created_at }}</p>
   <p>수정 시각: {{ review.updated_at }}</p>
+  {% if request.user == review.user %}
+    <form action="{% url 'community:review_delete' review.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="삭제">
+    </form>
+  {% endif %}
+
   <hr>
   <h4>댓글 목록</h4>
   {% if comments|length %}
@@ -17,6 +24,12 @@
   {% for comment in comments %}
     <div>
       {{ comment.user }} - {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url 'community:review_comment_delete' review.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="삭제">
+          </form>
+        {% endif %}
     </div>
   {% empty %}
     <p><b>댓글이 없어요..</b></p>

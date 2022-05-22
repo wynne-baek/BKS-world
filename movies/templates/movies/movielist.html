@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>{{ 검색한나라 }}</h1>
 <div class="row row-cols-1 row-cols-md-4 g-5" style="display:flex;">
   {% for movie in movies %}
@@ -16,8 +17,7 @@
         </div>
     </div>
   </div>
-  
-
-
 {% endfor %}
+
+
 {% endblock content %}

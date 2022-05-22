@@ -1,10 +1,11 @@
-from django.shortcuts import get_list_or_404, render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Movie
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def movie_home(request):
     return render(request, 'movies/moviehome.html')
 
-def search_movie(request):
+def movie_search(request):
     # 검색 버튼을 눌렀을 때 실행,
     search = request.GET.get('search', '')
     if search:
@@ -27,5 +28,4 @@ def movie_detail(request, movie_pk):
         'movie': movie,
     }
     return render(request, 'movies/moviedetail.html', context)
-
 

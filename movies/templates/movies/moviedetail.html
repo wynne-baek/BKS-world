@@ -8,7 +8,7 @@
       <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}" class="img-fluid rounded-start" alt="" style="width:500px; height:500px;" >
     </div>
     <div class="col-md-8">
-      <div class="card-body">
+      <div class="card-body" >
         <p>{{ movie.title }}</p>
         <p>{{ movie.country }}</p>
         <p>{{ movie.genres }}</p>
@@ -21,4 +21,7 @@
     </div>
   </div>
 </div>
+
+<a class="btn btn-primary" href="{% url 'movies:movie_search' %}" style="float:right; margin-right:10px; margin-bottom:15px;">BACK</a>
+
 {% endblock content %}
