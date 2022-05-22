@@ -11,6 +11,7 @@
 <p>REVIEW TITLE: {{ review.title }}</p>
 <p>MOVIE TITLE: {{ review.movie_title }}</p>
 <p>REVIEW CONTENT: {{ review.content }}</p>
+{% if user.is_authenticated %}
 <form id="like-form" data-review-id="{{ review.pk }}" class="d-inline">
   {% csrf_token %}
   {% if user in review.like_users.all %}
@@ -19,6 +20,7 @@
     <button id="like-{{ review.pk }}">좋아요</button>
   {% endif %}
 </form>
+{% endif %}
 <p>
   <span id="like-count-{{ review.pk }}">
     {{ review.like_users.all|length }}
