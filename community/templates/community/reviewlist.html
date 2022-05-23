@@ -1,34 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>review list(community index)</h1>
-<a class="btn btn-primary" href="{% url 'community:review_create'%}">CREATE NEW REVIEW</a>
-<hr>
+<div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
+  <h1 class="">COMMUNITY</h1>
+</div>
+<div style="width: 190px " class="mx-auto">
+  <a class="btn btn-primary" href="{% url 'community:review_create'%}">CREATE NEW REVIEW</a>
+</div>
 
 {% for review in reviews %}
-<p>작성자 : <a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
-<p>REVIEW NUMBER: {{ review.pk }}</p>
-<p>REVIEW TITLE: {{ review.title }}</p>
-<p>MOVIE TITLE: {{ review.movie_title }}</p>
-<p>REVIEW CONTENT: {{ review.content }}</p>
-{% if user.is_authenticated %}
-<form id="like-form" data-review-id="{{ review.pk }}" class="d-inline">
-  {% csrf_token %}
-  {% if user in review.like_users.all %}
-    <button id="like-{{ review.pk }}">좋아요 취소</button>
-  {% else %}
-    <button id="like-{{ review.pk }}">좋아요</button>
+<div id="review_detail" style="width: 700px; margin-top: 10px;" class="rounded border border-secondary mx-auto">
+  <h5 style="margin-left: 8px; margin-top: 20px;">{{ review.title }}</h5>
+  <p>MOVIE TITLE: {{ review.movie_title }}</p>
+  <p>작성자 : <a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
+  <p>REVIEW CONTENT: {{ review.content }}</p>
+  {% if user.is_authenticated %}
+  <form style="margin-left: 8px;" id="like-form" data-review-id="{{ review.pk }}" class="d-inline">
+    {% csrf_token %}
+    {% if user in review.like_users.all %}
+      <button id="like-{{ review.pk }}">좋아요 취소</button>
+    {% else %}
+      <button id="like-{{ review.pk }}">좋아요</button>
+    {% endif %}
+  </form>
   {% endif %}
-</form>
-{% endif %}
-<p>
-  <span id="like-count-{{ review.pk }}">
-    {{ review.like_users.all|length }}
-  </span>
-  명이 이 글을 좋아합니다.
-</p>
-<a href="{% url 'community:review_detail' review.pk %}">[detail]</a>
-<hr>
+  <p>
+    <span id="like-count-{{ review.pk }}">
+      {{ review.like_users.all|length }}
+    </span>
+    명이 이 글을 좋아합니다.
+  </p>
+  <a style="margin-left: 8px;" href="{% url 'community:review_detail' review.pk %}">[detail]</a>
+</div>
 {% endfor %}
 {% endblock content %}
 
@@ -60,3 +63,11 @@
 
   </script>
 {% endblock script %}
+
+{% block style %}
+<style>
+#review_detail > p {
+  margin-left: 8px;
+}
+</style>
+{% endblock style %}

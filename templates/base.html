@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <body>
-  <nav class="navbar bg-light container-fluid">
+  <nav class="navbar bg-light container-fluid sticky-top">
     <div>
       <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
         {% load static %}
@@ -42,6 +42,5 @@
 
   {% block script %}
   {% endblock script %}
-
 </body>
 </html>

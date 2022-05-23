@@ -1,9 +1,14 @@
+from random import randint, random
 from django.shortcuts import get_list_or_404, render, redirect, get_object_or_404
 from .models import Movie
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def movie_home(request):
-    return render(request, 'movies/moviehome.html')
+    num = randint(1, 5)
+    context = {
+        'num': num
+    }
+    return render(request, 'movies/moviehome.html', context)
 
 def movie_search(request):
     # 검색 버튼을 눌렀을 때 실행,
