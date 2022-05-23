@@ -50,7 +50,7 @@
     <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
   {% endif %}
   <div class="my-4" style="text-align:center;">
-  <button class="btn btn-primary" onclick="history.back()">BACK</button>
+  <a class="btn btn-primary" href="{% url 'community:review_list' %}">BACK</a>
   </div>
 </div>
 </div>
