@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_list_or_404, render, redirect, get_object_or_404
 from .models import Movie
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -24,8 +24,10 @@ def movie_search(request):
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
+    genres = movie.genres.all()
     context = {
         'movie': movie,
+        'genres' : genres,
     }
     return render(request, 'movies/moviedetail.html', context)
 

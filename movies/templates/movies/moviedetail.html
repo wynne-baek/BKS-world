@@ -11,7 +11,7 @@
       <div class="card-body" >
         <p>{{ movie.title }}</p>
         <p>{{ movie.country }}</p>
-        <p>{{ movie.genres }}</p>
+        <p>{% for genre in genres %}{{ genre.name }} | {% endfor %}</p>
         <p>{{ movie.release_date }}</p>
         <p>{{ movie.popularity }}</p>
         <p>{{ movie.vote_count }}</p>
