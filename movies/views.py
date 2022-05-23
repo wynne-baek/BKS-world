@@ -1,4 +1,5 @@
 from random import randint, random
+from django.http import JsonResponse
 from django.shortcuts import get_list_or_404, render, redirect, get_object_or_404
 from .models import Movie
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -42,3 +43,20 @@ def movie_detail(request, movie_pk):
     }
     return render(request, 'movies/moviedetail.html', context)
 
+def addWatched(request, movie_pk):
+    if request.user.is_authenticated:
+        movie = get_object_or_404(Movie, pk=movie_pk)
+        my = request.user
+        # 만약 본 거면 안본걸로
+        if my.watched_list.filter(pk=movie.pk).exists():
+            my.watched_list.remove(movie)
+            watched = False
+        # 안본거면 본걸로
+        else:
+            my.watched_list.add(movie)
+            watched = True
+        watched_status = {
+            'watched': watched
+        }
+        return JsonResponse(watched_status)
+    return redirect('movies:detail', movie_pk)
