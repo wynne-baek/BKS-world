@@ -2,8 +2,8 @@
 
 {% block content %}
 <h1>movie detail</h1>
-<div class="card mb-3" style="display:flex;">
-  <div class="row g-0">
+<div class="card" style="display:flex;">
+  <div class="row g-0" style="">
     <div class="col-md-4">
       <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}" class="img-fluid rounded-start" alt="" style="width:500px; height:500px;" >
     </div>
@@ -22,8 +22,8 @@
   </div>
 </div>
 
-<div>
-  <button onclick="history.back()" class="btn btn-primary" style="float:right; margin-right:10px; margin-bottom:15px;">BACK</button>
+<div class="m-2" style="text-align:right;">
+  <button onclick="history.back()" class="btn btn-primary" style="">BACK</button>
 </div>
 
 {% endblock content %}

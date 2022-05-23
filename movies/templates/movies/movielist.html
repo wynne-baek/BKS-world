@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>{{ 검색한나라 }}</h1>
-<div class="row row-cols-1 row-cols-md-4 g-5" style="display:flex; ">
+<div class="row row-cols-1 row-cols-md-4 g-5" style="display:flex;">
   {% for movie in movies %}
   <div class="col text-center" style="" >
     <div class="card h-100" style="min-width: 215px;">
@@ -19,6 +19,28 @@
   </div>
 {% endfor %}
 
-<a align="right" href="{% url 'movies:movie_search' %}" style="position:fixed; bottom:10px; right:0px;">▲TOP</a>
+
+<div class="pagination text-center" style="margin:auto; white-space: nowrap; margin-top:15px;">
+  <span class="step-links " style="">
+    {% if movies.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ movies.previous_page_number }}">previous</a>
+    {% endif %}
+    <span class="current" style= "">
+      Page {{ movies.number }} of {{ movies.paginator.num_pages }}
+    </span>
+    {% if movies.has_next %}
+    <a href="?page={{ movies.next_page_number }}">next</a>
+    <a href="?page={{ movies.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+  </span>
+</div>
+
+<a align="right" href="{% url 'movies:movie_search' %}" style="position:fixed; bottom:25px; right:-10px; margin-top:10px;">▲TOP</a>
+
+<script>
+
+
+</script>
 
 {% endblock content %}
