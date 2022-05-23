@@ -44,7 +44,7 @@
     <form action="{% url 'community:review_comment_create' review.pk %}" method="POST">
       {% csrf_token %}
       {{ comment_form }}
-      <div style="text-align: right; margin-right: 20px;" ><input type="submit"></div>
+      <div style="text-align: right; margin-right: 10px;" ><input type="submit" value="WRITE"></div>
     </form>
   {% else %}
     <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
