@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% comment %} 제목, 작성자, 작성일, 수정일 {% endcomment %}
 <div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
   <p>{{ review.movie_title }}</p>
   <h1 class="">{{ review.title }}</h1>
@@ -8,10 +9,13 @@
   <div class="text-black-50">Written at | {{ review.created_at }}</div>
   <div class="text-black-50">Updated at | {{ review.updated_at }}</div>
 </div>
-<div style="width: 700px; margin-top: 10px;" class="mx-auto">
+
+{% comment %} 디테일 {% endcomment %}
+<div style="min-width: 700px; max-width: 1200px; margin-top: 10px;" class="mx-auto">
+  {% comment %} 디테일 {% endcomment %}
   <div id="detail">
   <p>평점: {{ review.rate }}</p>
-  <p>{{ review.content }}</p>
+  <p class="my-5">{{ review.content }}</p>
   {% if request.user == review.user %}
   <a class="btn btn-outline-info btn-sm" href="{% url 'community:review_update' review.pk %}" style="float:left;" >수정</a>
     <form action="{% url 'community:review_delete' review.pk %}" method="POST">
@@ -20,7 +24,25 @@
     </form>
   {% endif %}
   </div>
+
+  {% comment %} 좋아요 버튼 {% endcomment %}
+
+  <div id="container">
+    <form style="margin-left: 10px;" id="like-form" data-id="{{ review.pk }}" class="d-inline">
+      {% csrf_token %}
+      {% if user in review.like_users.all %}
+      <div id="likeButton" class="heart-like-button liked" data-id="{{ review.pk }}"></div>
+      {% else %}
+      <div id="likeButton" class="heart-like-button" data-id="{{ review.pk }}"></div>
+      {% endif %}
+    </form>
+      <div id="like-count">
+        {{ review.like_users.all|length }}  
+      </div>
+  </div>
+
   <hr>
+  {% comment %} 댓글 {% endcomment %}
   <div id="comment">
   <h5>댓글 <span class="text-primary">{{ comments|length }}</span></h5>
   {% for comment in comments %}
@@ -33,14 +55,15 @@
             {% csrf_token %}
             <input type="submit" value="삭제">
           </form>
-          <hr>
         {% endif %}
 
   {% empty %}
     <p><b>댓글이 없어요..</b></p>
   {% endfor %}
-</div>
+  <hr>
+  </div>
 
+  {% comment %} comment 작성란 {% endcomment %}
   <div id="comment_form">
   {% if request.user.is_authenticated %}
     <form action="{% url 'community:review_comment_create' review.pk %}" method="POST">
@@ -54,7 +77,7 @@
   <div class="my-4" style="text-align:center;">
   <a class="btn btn-primary" href="{% url 'community:review_list' %}">BACK</a>
   </div>
-</div>
+  </div>
 </div>
 
 
@@ -75,5 +98,101 @@
     border-radius: 12px;
   } 
   {% endcomment %}
+
+  {% comment %} like button css {% endcomment %}
+
+  #container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    padding: 30px 15px;
+  }
+  .heart-like-button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+  #like-count {
+    margin-left: 9px;
+  }
+  .heart-like-button:before {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    width: 15px;
+    height: 25px;
+    border-radius: 40px 40px 0 0;
+    background-color: #d3d3d3;
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+  }
+  .heart-like-button:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin :100% 100%;
+    width: 15px;
+    height: 25px;
+    border-radius: 40px 40px 0 0;
+    background-color: #d3d3d3;
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+  }
+  .heart-like-button.liked::before,
+  .heart-like-button.liked::after {
+    background-color: #d65076;
+  }
+  .heart-like-button.liked {
+    animation: liked .4s ease;
+  }
+  @keyframes liked {
+    0% {
+      transform: scale(.8);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 </style>
 {% endblock content %}
+
+{% block script %}
+<script>
+  {% comment %} 좋아요 버튼 {% endcomment %}
+const likeForm = document.querySelector('#like-form')
+const likeButton = document.querySelector(".heart-like-button")
+  if (likeForm) {
+    axios.defaults.xsrfCookieName = 'csrftoken'
+    axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+    likeButton.addEventListener('click', function(event) {
+      console.log(event.target)
+      const reviewId = event.target.dataset.id
+      const URL = `http://127.0.0.1:8000/community/${reviewId}/like/`
+      axios.post(URL)
+      .then(res => {
+        const count = res.data.count
+        const liked = res.data.liked
+        const likeCount = document.querySelector(`#like-count`)
+        const likeButton = document.querySelector(".heart-like-button")
+        if (liked) {
+          likeButton.classList.add("liked");
+        } else {
+          likeButton.classList.remove("liked");
+        }
+        likeCount.innerText = count
+      }
+)})}
+
+</script>
+{% endblock script %}
