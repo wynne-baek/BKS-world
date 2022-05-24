@@ -27,6 +27,12 @@
         </form>
       </div>
     {% endif %}
+    {% if request.user == person %}
+    <div class="mt-3">
+      <a href="{% url 'accounts:update' %}" class="btn btn-outline-secondary btn-sm">회원정보 수정</a>
+      <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-secondary btn-sm">비밀번호 변경</a>
+    </div>
+    {% endif %}
   </div>
 
 </div>
