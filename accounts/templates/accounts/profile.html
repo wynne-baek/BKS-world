@@ -31,7 +31,7 @@
 {% endwith %}
 </div>
 
-<div style="width: 900px; margin-top: 10px;" class="mx-auto">
+<div style="min-width: 700px; max-width: 1200px; margin-top: 10px; height: 100vh;" class="mx-auto">
 <h3 class="text-center">WATCHED LIST</h3>
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
@@ -45,11 +45,10 @@
 </div>
 
 <hr>
-
-<h3 class="text-center">MOVIE REVEIW</h3>
+<h3 class="text-center my-5">MOVIE REVEIW</h3>
   {% for review in person.review_set.all %}
-    <h5>{{ review.title }}</h5>
-    <p>{{ review.content }}</p>
+    <h5><a class="text-decoration-none text-dark" href="{% url 'community:review_detail' review.pk %}">{{ review.title }}</a></h5>
+    <p class="text-secondary">{{ review.content }}</p>
     <hr>
   {% endfor %}
 
