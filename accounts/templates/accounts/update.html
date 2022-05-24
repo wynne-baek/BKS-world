@@ -2,14 +2,13 @@
 
 {% block content %}
 <div class="text-center" style="margin-top: 50px; margin-bottom: 50px; min-width: 900px; max-width: 1500px;">
-  <h1>Login</h1>
+  <h1>회원정보 수정</h1>
 </div>
-
 <div class="mx-auto" style="min-width: 900px; max-width: 1500px; margin-top: 10px;">
-  <form action="{% url 'accounts:login' %}" method="POST" class="mx-auto" style="width:500px;">
+  <form action="{% url 'accounts:update' %}" method="POST" class="mx-auto" style="width:800px;">
     {% csrf_token %}
-    <div class="mx-auto">{{ form.as_p }}</div>
-    <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-primary" type="submit"></div>
+    {{ form.as_p }}
+    <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-primary" type="submit" value="회원정보 수정"></div>
   </form>
 </div>
 {% endblock content %}

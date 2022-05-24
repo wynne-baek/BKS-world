@@ -6,29 +6,35 @@
   <div>
     팔로잉 :
     <span id="following-count">
-      {{ following|length }}
+      {{ person.following.all|length }}
     </span>
     |  팔로워 :
     <span id="follower-count">
-      {{ follower|length }}
+      {{ person.follower.all|length }}
     </span>
   </div>
-  {% with following=person.following.all follower=person.follower.all %}
+  
   <div>
     {% if request.user != person %}
-      <div class="mt-2">
+      <div class="mt-3">
         <form data-person-id="{{ person.pk }}" id="follow-form">
           {% csrf_token %}
-          {% if request.user in follower %}
-            <button id="followBtn">언팔로우</button>
+          {% if request.user in person.follower.all %}
+            <button id="followBtn" class="btn btn-outline-danger btn-sm">언팔로우</button>
           {% else %}
-            <button id="followBtn">팔로우</button>
+            <button id="followBtn" class="btn btn-outline-success btn-sm">팔로우</button>
           {% endif %}
         </form>
       </div>
     {% endif %}
+    {% if request.user == person %}
+    <div class="mt-3">
+      <a href="{% url 'accounts:update' %}" class="btn btn-outline-secondary btn-sm">회원정보 수정</a>
+      <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-secondary btn-sm">비밀번호 변경</a>
+    </div>
+    {% endif %}
   </div>
-{% endwith %}
+
 </div>
 
 <div style="min-width: 700px; max-width: 1200px; margin-top: 10px; height: 100vh;" class="mx-auto">
@@ -95,9 +101,11 @@
         const followBtn = document.querySelector('#followBtn')
         const followerNum = document.querySelector('#follower-count')
         if (followed === true) {
-          followBtn.value = '언팔로우'
+          followBtn.innerText = '언팔로우'
+          followBtn.className = 'btn btn-outline-danger btn-sm'
         } else {
-          followBtn.value = '팔로우'
+          followBtn.innerText = '팔로우'
+          followBtn.className = 'btn btn-outline-success btn-sm'
         }
         followerNum.innerText = followerCount
       })

@@ -4,11 +4,11 @@
 <div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
 <h1>Sign Up</h1>
 </div>
-<div style="width: 700px; margin-top: 10px;" class="mx-auto">
-<form action="" method="POST">
+<div style="min-width: 900px; max-width: 1500px; margin-top: 10px;" class="mx-auto">
+<form action="" method="POST" class="mx-auto" style="width:700px;>
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit">
+  <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-primary" type="submit" value="회원가입"></div>
 </form>
 </div>
 {% endblock content %}
