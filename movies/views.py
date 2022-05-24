@@ -17,18 +17,20 @@ def movie_search(request):
     if search:
         movies = Movie.objects.filter(country=f'{search}')
         paginator = Paginator(movies, 12)
-        page_number = request.GET.get("page") 
+        page_number = request.GET.get("page", '') 
         page_movies = paginator.get_page(page_number)
     else:
         movies = Movie.objects.all()
         paginator = Paginator(movies, 12)
-        page_number = request.GET.get("page") 
+        page_number = request.GET.get("page", '') 
         page_movies = paginator.get_page(page_number)
     # 1. 로그인 여부 확인
     # 2. 로그인 되어 있을 경우, 검색어 쿼리에 넣어서 해당 국가 정보가 들어있는 영화만 보여줌
     if request.user.is_authenticated:
         context = {
-            'movies': page_movies,
+            'movies':page_movies,
+            'search': search,
+
         }
         return render(request, 'movies/movielist.html', context)
     # 1-2. 로그인 되어있지 않으면, 로그인 페이지로

@@ -20,7 +20,7 @@
         <th class="date">날짜</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="">
       {% for review in reviews %}
       <tr>
         <td><a href="{% url 'community:review_detail' review.pk %}">{{ review.title }}</a></td>
