@@ -13,9 +13,10 @@
   <p>평점: {{ review.rate }}</p>
   <p>{{ review.content }}</p>
   {% if request.user == review.user %}
+  <a class="btn btn-outline-info btn-sm" href="{% url 'community:review_update' review.pk %}" style="float:left;" >수정</a>
     <form action="{% url 'community:review_delete' review.pk %}" method="POST">
       {% csrf_token %}
-      <input type="submit" value="삭제">
+      <input class="btn btn-outline-info btn-sm" type="submit" value="삭제" style=" margin-left:10px;">
     </form>
   {% endif %}
   </div>
@@ -25,20 +26,21 @@
   {% for comment in comments %}
       <span><a href="{% url 'accounts:profile' comment.user.username %}">{{ comment.user }}</a></span>
       <span class="text-black-50">  |  {{ comment.created_at }}</span>
-      <p>{{ comment.content }}</p>
-      
+      <p class="mt-2">{{ comment.content }}</p>
         {% if request.user == comment.user %}
+        {% comment %} <a class="btn btn-outline-info btn-sm" href="{% url 'community:review_comment_update' comment.pk review.pk %}" style="float:left;" >수정</a> {% endcomment %}
           <form action="{% url 'community:review_comment_delete' review.pk comment.pk %}" method="POST">
             {% csrf_token %}
             <input type="submit" value="삭제">
           </form>
+          <hr>
         {% endif %}
 
   {% empty %}
     <p><b>댓글이 없어요..</b></p>
   {% endfor %}
 </div>
-  <hr>
+
   <div id="comment_form">
   {% if request.user.is_authenticated %}
     <form action="{% url 'community:review_comment_create' review.pk %}" method="POST">
@@ -67,5 +69,11 @@
   #comment_form {
     margin-left: 10px;
   }
+
+  {% comment %} 버튼 둥글게
+  .btn {
+    border-radius: 12px;
+  } 
+  {% endcomment %}
 </style>
 {% endblock content %}
