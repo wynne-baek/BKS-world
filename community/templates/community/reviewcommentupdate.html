@@ -1,0 +1,35 @@
+{% comment %} 
+{% extends 'base.html' %}
+
+{% block content %}
+
+꼼수 -> 리뷰 밑에 댓글 수정..?
+<div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
+  <p>{{ review.movie_title }}</p>
+  <h1 class="">{{ review.title }}</h1>
+  <p><a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
+  <div class="text-black-50">Written at | {{ review.created_at }}</div>
+  <div class="text-black-50">Updated at | {{ review.updated_at }}</div>
+</div>
+<div style="width: 700px; margin-top: 10px;" class="mx-auto">
+  <div id="detail">
+  <p>평점: {{ review.rate }}</p>
+  <p>{{ review.content }}</p>
+  </div> 
+
+
+<div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
+  <h1>Review Comment Update</h1>
+  </div>
+  <div style="width: 700px; margin-top: 10px;" class="mx-auto">
+  <form action="{% url 'community:review_comment_create' comment.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="my-4" style="text-align:center;">
+      <input class="btn btn-primary" type="submit" value="SUBMIT">
+      <a class="btn btn-secondary" href="{% url 'community:review_detail' %}">BACK</a>
+    </div>
+  </form>
+</div>
+{% endblock content %}
+{% endcomment %}
