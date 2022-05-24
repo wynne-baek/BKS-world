@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.movie_home, name='movie_home'),
     path('list/', views.movie_search, name='movie_search'),
     path('<int:movie_pk>/', views.movie_detail, name='movie_detail'),
+    path('<int:movie_pk>/addwatched/', views.addWatched, name='movie_watched')
 
 ]

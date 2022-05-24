@@ -8,7 +8,7 @@
       <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}" class="img-fluid rounded-start" alt="" style="width:500px; height:500px;" >
     </div>
     <div class="col-md-8 h-100">
-      <div class="card-body" >
+      <div class="card-body ml-3" >
         <p>{{ movie.title }}</p>
         <p>{{ movie.country }}</p>
         <p>{% for genre in genres %}{{ genre.name }} | {% endfor %}</p>
@@ -17,6 +17,19 @@
         <p>{{ movie.vote_count }}</p>
         <p>{{ movie.vote_average }}</p>
         <p>{{ movie.overview }}</p>
+
+        {% if user.is_authenticated %}
+        <div>
+        <form id="watched-form" data-movie-id="{{ movie.pk }}" class="d-inline">
+        {% csrf_token %}
+        {% if movie in user.watched_list.all %}
+          <button id="add-{{ movie.pk }}">Not Yet</button>
+        {% else %}
+          <button id="add-{{ movie.pk }}">Watched</button>
+        {% endif %}
+        </form>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -27,3 +40,29 @@
 </div>
 
 {% endblock content %}
+
+{% block script %}
+<script>
+  const watchedForm = document.querySelector('#watched-form')
+    if (watchedForm) {
+      axios.defaults.xsrfCookieName = 'csrftoken'
+      axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+      watchedForm.addEventListener('submit', function(event) {
+        event.preventDefault()
+        const movieId = event.target.dataset.movieId
+        const URL = `http://127.0.0.1:8000/movies/${movieId}/addwatched/`
+        axios.post(URL)
+        .then(res => {
+          const watched = res.data.watched
+          const watchedBtn = document.querySelector(`#add-${movieId}`)
+          if (watched) {
+            watchedBtn.innerText = 'Not Yet'
+          } else {
+            watchedBtn.innerText = 'Watched'
+          }
+        })
+      })
+    }
+
+</script>
+{% endblock script %}
