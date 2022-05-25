@@ -13,7 +13,9 @@
 />
   <title>Document</title>
 </head>
-<body style="">
+<body style=" font-color:#ffd400; background: -webkit-linear-gradient(to right, #141e30, #243b55); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #141e30, #243b55);
+">
   <nav class="navbar bg-light container-fluid sticky-top" style="">
     <div>
       <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
@@ -39,7 +41,7 @@
     </div>
   </nav>
 
-  <main class="" style=" min-height: calc(100vh - 50px); ">
+  <main class="" style=" min-height: calc(100vh - 55px); ">
   {% block content %}
   {% endblock content %}
   </main>
@@ -52,12 +54,13 @@
   {% block script %}
   {% endblock script %}
 
-  <div class="wrap" style="">
-    <footer class="footer text-white text-center" style="
-    height: 55px; background-color:#FFE4E1; text-color:secondary;">
+  <div class="wrap mb-0" style="">
+    <footer class="footer text-white text-center" style="height: 55px; background-color:#FFE4E1; position: relative;">
       <p style="margin-bottom:0; font-size:12px;">200%</p>
-      <p style="margin-bottom:0; font-size:12px;"><a href="" style="text-decoration-line: none;">Github_백경원</a>
-          <a href="" style="text-decoration-line: none; ">Github_이보나</a></p>
+      <p style="margin-bottom:0; font-size:12px;">
+        <a href="" style="text-decoration-line: none;">Github_백경원</a>
+        <a href="" style="text-decoration-line: none; ">Github_이보나</a>
+      </p>
       <p style="margin-bottom:0; font-size:12px" >Copyright 2022 cocoder.All Rights Reversed.</p>
     </footer>
   </div>
