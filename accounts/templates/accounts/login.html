@@ -1,15 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center" style="margin-top: 50px; margin-bottom: 50px; min-width: 900px; max-width: 1500px;">
-  <h1>Login</h1>
+<div class="text-center" style="margin-top: 40px; margin-bottom: 40px;">
+  <h1 style="color:#FFD700; font-weight:bold;">Login</h1>
+</div>
+<div class="main" style="text-align:center; position: relative;">
+  <div style="margin:auto; position: absolute; bottom:170px; right:70px;">
+    <form action="{% url 'accounts:login' %}" method="POST" class="text-center">
+      {% csrf_token %}
+      <div class="m-auto" style="">{{ form.as_p }}</div>
+      <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-warning" type="submit" value="login" style=""></div>
+    </form>
+  </div>  
+  <div class="text-center" style="margin:auto; position: absolute; bottom:10px; right:110px; ">
+    <p>앗 아직 회원이 아니시군뇨!</p>
+    <a class="btn btn-sm btn-warning"  href="{% url 'accounts:signup' %}" style="">signup</a>
+  </div>
 </div>
 
-<div class="mx-auto" style="min-width: 900px; max-width: 1500px; margin-top: 10px;">
-  <form action="{% url 'accounts:login' %}" method="POST" class="mx-auto" style="width:500px;">
-    {% csrf_token %}
-    <div class="mx-auto">{{ form.as_p }}</div>
-    <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-primary" type="submit"></div>
-  </form>
-</div>
+
+<style>
+
+.main{
+  margin: auto;
+  margin-bottom: 80px;
+  border-radius: 30px;
+  height: 480px;
+  width: 430px;
+  background: white;
+  box-shadow: 0px 20px 100px rgba(0,0,0,0.1);
+}
+
+</style>
 {% endblock content %}
