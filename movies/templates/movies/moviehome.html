@@ -77,34 +77,36 @@
   <body >
     {% load static %}
     <!-- Swiper -->
-    <nav class="navbar container-fluid sticky-top" style="background-color: #00ff0000;">
-      <div>
-        <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
-          {% load static %}
-          <img src="{% static '422995.jpg' %}" alt="" width="30" height="30" class="d-inline-block align-text-top"> 방구석 세계여행
-        </a>
-      </div>
-      <div>
-        {% if request.user.is_authenticated %}
-          <a class="btn" href="{% url 'movies:movie_home' %}">HOME</a>
-          <a class="btn" href="{% url 'community:review_list' %}">COMMUNITY</a>
-          <a class="btn" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
-          <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; white-space: nowrap;">
-            {% csrf_token %}
-            <input  class="btn" type="submit" value="LOGOUT">
-          </form>
-        {% else %}
-          <a class="btn" href="{% url 'movies:movie_home' %}">HOME</a>
-          <a class="btn"  href="{% url 'community:review_list' %}">COMMUNITY</a>
-          <a class="btn"  href="{% url 'accounts:login' %}">LOGIN</a>
-          <a class="btn"  href="{% url 'accounts:signup' %}">SINGUP</a>
-        {% endif %}
-      </div>
-    </nav>
+    {% comment %} 각 slide마다 nav 추가 {% endcomment %}
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
             <img style="position: relative;" src="/static/main{{ num }}.jpeg" alt="">
+            <nav class="navbar container-fluid sticky-top" style="background-color: #00ff0000; position: absolute;">
+              <div style="width: 150px; margin-left:30px;">
+                <img src="{% static 'Logo.png' %}" alt="">
+                {% comment %} <a class="navbar-brand" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 35px;" href="{% url 'movies:movie_home' %}">
+                  
+                  방구석 세계여행
+                </a> {% endcomment %}
+              </div>
+              <div>
+                {% if request.user.is_authenticated %}
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'community:review_list' %}">COMMUNITY</a>
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
+                  <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; white-space: nowrap; margin-right:30px;">
+                    {% csrf_token %}
+                    <input style="border: none; background-color: #00ff0000; color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px; " class="mx-3" type="submit" value="LOGOUT">
+                  </form>
+                {% else %}
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'community:review_list' %}">COMMUNITY</a>
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:login' %}">LOGIN</a>
+                  <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:signup' %}">SIGN UP</a>
+                {% endif %}
+              </div>
+            </nav>
             <div id="search-form">
               <h1 style="margin-bottom: 20px; color: white;">Find Your Destination</h1>
               <form action="{% url 'movies:movie_search' %}" method="GET">
@@ -116,8 +118,33 @@
           </div>
         <div class="swiper-slide" style="background: -webkit-linear-gradient(to right, #141e30, #243b55); 
         background: linear-gradient(to right, #141e30, #243b55);">
+        <nav class="navbar container-fluid sticky-top" style="background-color: #00ff0000; position: absolute;">
+          <div style="width: 150px; margin-left:30px;">
+            <img src="{% static 'Logo.png' %}" alt="">
+            {% comment %} <a class="navbar-brand" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 35px;" href="{% url 'movies:movie_home' %}">
+              
+              방구석 세계여행
+            </a> {% endcomment %}
+          </div>
+          <div>
+            {% if request.user.is_authenticated %}
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'community:review_list' %}">COMMUNITY</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
+              <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; white-space: nowrap; margin-right:30px;">
+                {% csrf_token %}
+                <input style="border: none; background-color: #00ff0000; color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px; " class="mx-3" type="submit" value="LOGOUT">
+              </form>
+            {% else %}
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'community:review_list' %}">COMMUNITY</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:login' %}">LOGIN</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:signup' %}">SIGN UP</a>
+            {% endif %}
+          </div>
+        </nav>
           <div class="m-4" style="padding-top: 50px; padding-bottom: 50px;">
-            <h3 class="my-2 text-center" style="color:#FFD700; font-weight:bold; padding-bottom:30px;">도시별 영화 추천</h3>
+            <h3 class="my-2 text-center" style="color:#ffffff; font-weight:bold; padding-bottom:30px;">도시별 영화 추천</h3>
             <div class="row row-cols-2 row-cols-lg-4 g-4 mx-5"style="margin-top:10px;">
               <div class="col ml-2">
                 <div class="card main text-center h-100 img">
@@ -160,43 +187,69 @@
         </div>
         <div class="swiper-slide" style="background: -webkit-linear-gradient(to right, #141e30, #243b55); 
         background: linear-gradient(to right, #141e30, #243b55);">
+        {% comment %} nav {% endcomment %}
+        <nav class="navbar container-fluid sticky-top" style="background-color: #00ff0000; position: absolute;">
+          <div style="width: 150px; margin-left:30px;">
+            <img src="{% static 'Logo.png' %}" alt="">
+            {% comment %} <a class="navbar-brand" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 35px;" href="{% url 'movies:movie_home' %}">
+              
+              방구석 세계여행
+            </a> {% endcomment %}
+          </div>
+          <div>
+            {% if request.user.is_authenticated %}
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'community:review_list' %}">COMMUNITY</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
+              <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; white-space: nowrap; margin-right:30px;">
+                {% csrf_token %}
+                <input style="border: none; background-color: #00ff0000; color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px; " class="mx-3" type="submit" value="LOGOUT">
+              </form>
+            {% else %}
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'community:review_list' %}">COMMUNITY</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:login' %}">LOGIN</a>
+              <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:signup' %}">SIGN UP</a>
+            {% endif %}
+          </div>
+        </nav>
           <div class="m-4" style="padding-top: 50px; padding-bottom: 50px;" >
-            <h3 class="my-2 text-center" style="color:#FFD700; font-weight:bold; padding-bottom:30px;">패키지 영화 추천</h3>
+            <h3 class="my-2 text-center" style="color:#ffffff; font-weight:bold; padding-bottom:30px;">패키지 영화 추천</h3>
             <div class="row row-cols-2 row-cols-lg-4 g-4 mx-5" style="margin-top:10px;">
               <div class="col ml-2">
                 <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">끝나지 않은, 분노의 질주</h5>
                   <img src="{% static 'F&F.jpg' %}" height="" class="card-img-top mb-3 scale" alt="빛의 도시, 파리">
-                  <a href="{% url 'movies:movie_detail' 133 %}" class="mb-1">분노의 질주: 더 맥시멈</a>
-                  <a href="{% url 'movies:movie_detail' 134 %}" class="mb-1">분노의 질주: 더 얼티메이트</a>
-                  <a href="{% url 'movies:movie_detail' 5 %}" class="mb-1">분노의 질주: 언리미티드</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 133 %}" class="mb-1">분노의 질주: 더 맥시멈</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 134 %}" class="mb-1">분노의 질주: 더 얼티메이트</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 5 %}" class="mb-2">분노의 질주: 언리미티드</a>
                 </div>
               </div>
               <div class="col">
                 <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">Manners Maketh Man</h5>
                   <img src="{% static 'Kingsman.jpeg' %}" class="card-img-top mb-3 scale" alt="Big Apple, NY">
-                  <a href="{% url 'movies:movie_detail' 158 %}" class="mb-1">킹스맨: 시크릿 에이전트</a>
-                  <a href="{% url 'movies:movie_detail' 159 %}" class="mb-1">킹스맨: 골든 서클</a>
-                  <a href="{% url 'movies:movie_detail' 160 %}" class="mb-1">킹스맨: 퍼스트 에이전트</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 158 %}" class="mb-1">킹스맨: 시크릿 에이전트</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 159 %}" class="mb-1">킹스맨: 골든 서클</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 160 %}" class="mb-2">킹스맨: 퍼스트 에이전트</a>
                 </div>
               </div>
               <div class="col">
                 <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">해리포터와 마법의 세계로</h5>
                   <img src="{% static 'HP.jpg' %}" class="card-img-top mb-3 scale" alt="발리우드 뭄바이">
-                  <a href="{% url 'movies:movie_detail' 153 %}" class="mb-1">해리 포터와 마법사의 돌</a>
-                  <a href="{% url 'movies:movie_detail' 154 %}" class="mb-1">해리 포터와 비밀의 방</a>
-                  <a href="{% url 'movies:movie_detail' 155 %}" class="mb-1">해리 포터와 아즈카반의 죄수</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 153 %}" class="mb-1">해리 포터와 마법사의 돌</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 154 %}" class="mb-1">해리 포터와 비밀의 방</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 155 %}" class="mb-2">해리 포터와 아즈카반의 죄수</a>
                 </div>
               </div>
               <div class="col mr-2">
                 <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">우리가 사랑한 스파이, 007</h5>
                   <img src="{% static '007.jpg' %}" class="card-img-top mb-3 scale" alt="열정의 리우데자네이루">
-                  <a href="{% url 'movies:movie_detail' 127 %}" class="mb-1">007 퀸텀 오브 솔러스</a>        
-                  <a href="{% url 'movies:movie_detail' 104 %}" class="mb-1">007 스카이폴</a>
-                  <a href="{% url 'movies:movie_detail' 123 %}" class="mb-2">007 노 타임 투 다이</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 127 %}" class="mb-1">007 퀸텀 오브 솔러스</a>        
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 104 %}" class="mb-1">007 스카이폴</a>
+                  <a class="movie-link" href="{% url 'movies:movie_detail' 123 %}" class="mb-2">007 노 타임 투 다이</a>
                 </div>
               </div>
             </div>
@@ -255,6 +308,14 @@
 }  
 .swiper-pagination-bullet-active {
   background-color: #FFD700;
+}
+.movie-link {
+  text-decoration: none;
+  color: black;
+  padding-bottom: 5px;
+}
+a:hover {
+  text-decoration: underlined;
 }
   </style>
 </html>
