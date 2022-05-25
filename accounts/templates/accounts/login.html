@@ -5,14 +5,14 @@
   <h1 style="color:#FFD700; font-weight:bold;">Login</h1>
 </div>
 <div class="main" style="text-align:center; position: relative;">
-  <div style="margin:auto; position: absolute; bottom:170px; right:70px;">
+  <div style="position:absolute; top:8%; margin:70px;">
     <form action="{% url 'accounts:login' %}" method="POST" class="text-center">
       {% csrf_token %}
       <div class="m-auto" style="">{{ form.as_p }}</div>
-      <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-warning" type="submit" value="login" style=""></div>
+      <div class="my-4 mx-auto" style=""><input class="btn btn-warning" type="submit" value="login" style=""></div>
     </form>
   </div>  
-  <div class="text-center" style="margin:auto; position: absolute; bottom:10px; right:110px; ">
+  <div style="position:absolute; top:80%; right:28%;">
     <p>앗 아직 회원이 아니시군뇨!</p>
     <a class="btn btn-sm btn-warning"  href="{% url 'accounts:signup' %}" style="">signup</a>
   </div>
