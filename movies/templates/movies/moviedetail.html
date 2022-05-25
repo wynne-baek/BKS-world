@@ -2,34 +2,43 @@
 
 {% block content %}
 <h1>movie detail</h1>
-<div class="card" style="display:flex;">
-  <div class="row g-0" style="">
+<div class="card" style="display:flex; width: 75%; align-items:center;">
+  <div class="row g-0" style="align-items:center;">
     <div class="col-md-4">
       <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}" class="img-fluid rounded-start" alt="" style="width:500px; height:500px;" >
     </div>
     <div class="col-md-8 h-100">
       <div class="card-body ml-3" >
-        <p>{{ movie.title }}</p>
-        <p>{{ movie.country }}</p>
-        <p>{% for genre in genres %}{{ genre.name }} | {% endfor %}</p>
-        <p>{{ movie.release_date }}</p>
-        <p>{{ movie.popularity }}</p>
-        <p>{{ movie.vote_count }}</p>
-        <p>{{ movie.vote_average }}</p>
-        <p>{{ movie.overview }}</p>
-
-        {% if user.is_authenticated %}
-        <div>
-        <form id="watched-form" data-movie-id="{{ movie.pk }}" class="d-inline">
-        {% csrf_token %}
-        {% if movie in user.watched_list.all %}
-          <button id="add-{{ movie.pk }}">Not Yet</button>
-        {% else %}
-          <button id="add-{{ movie.pk }}">Watched</button>
-        {% endif %}
-        </form>
+        <h3 class="movie-title" style="margin-bottom:15px;">{{ movie.title }}</h3>
+        <h6 class="movie-year" style="font: size 3px;">{{ movie.release_date }}
+        <div class="movie-ratings" style="float:right;">
+          <span class="star">★</span>
+          <span class="score">{{ movie.vote_average }}</span>
+          <span class="score-out-of">/ 10 (TMDB)</span>
         </div>
-        {% endif %}
+        </h6>
+      <div>
+      <hr>
+      <div class="movie-details" style="margin-bottom:2px;"><span class="">{{ movie.country }}</span></div>
+        <div class="movie-castcrew" style="margin-bottom:2px;"><span class="">{{ movie.popularity }}</span></div>
+        <div class="movie-castcrew" style="margin-bottom:2px;"><span class="">{{ movie.vote_count }}</span></div>
+        <div class="movie-castcrew" style="margin-bottom:2px;"><span class="">{% for genre in genres %}{{ genre.name }} | {% endfor %}</span></div>
+      </div>
+      <hr>
+      <div class="movie-synopsis">{{ movie.overview }}</div>
+    {% if user.is_authenticated %}
+    <div class="mt-3" style="position:relative">
+      <form id="watched-form" data-movie-id="{{ movie.pk }}" class="d-inline">
+      {% csrf_token %}
+      {% if movie in user.watched_list.all %}
+        <button class="btn" id="add-{{ movie.pk }}" style="background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%); position:absolute, bottom:0, left:0;"></button>
+      {% else %}
+        <button class="btn" id="add-{{ movie.pk }}" style="background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%); position:absolute, bottom:0, left:0;
+">Watched</button>
+      {% endif %}
+      </form>
+    </div>
+    {% endif %}
       </div>
     </div>
   </div>
@@ -37,7 +46,8 @@
 
 <div class="m-2" style="text-align:right;">
   <button onclick="history.back()" class="btn btn-primary" style="">BACK</button>
-</div>
+</div> 
+
 
 {% endblock content %}
 
@@ -65,4 +75,8 @@
     }
 
 </script>
+
+<style>
+
+</style>
 {% endblock script %}
