@@ -21,6 +21,7 @@
       body {
         position: relative;
         height: 100%;
+        
       }
 
       body {
@@ -73,10 +74,10 @@
     </style>
   </head>
 
-  <body>
+  <body >
     {% load static %}
     <!-- Swiper -->
-    <nav class="navbar container-fluid sticky-top" style="background-color: #87CEFA;">
+    <nav class="navbar container-fluid sticky-top" style="background-color: #00ff0000;">
       <div>
         <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
           {% load static %}
@@ -113,12 +114,13 @@
               </form>
             </div>
           </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" style="background: -webkit-linear-gradient(to right, #141e30, #243b55); 
+        background: linear-gradient(to right, #141e30, #243b55);">
           <div class="m-4" style="padding-top: 50px; padding-bottom: 50px;">
-            <h3 class="my-2 text-center">도시별 영화 추천</h3>
+            <h3 class="my-2 text-center" style="color:#FFD700; font-weight:bold; padding-bottom:30px;">도시별 영화 추천</h3>
             <div class="row row-cols-2 row-cols-lg-4 g-4 mx-5"style="margin-top:10px;">
               <div class="col ml-2">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">빛의 도시, 파리</h5>
                   <img src="{% static 'paris.jpg' %}" height="" class="card-img-top scale" alt="빛의 도시, 파리">
                   <div>
@@ -127,7 +129,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">Big Apple, NY</h5>
                   <img src="{% static 'NY.jpg' %}" class="card-img-top scale" alt="Big Apple, NY">
                   <div>
@@ -136,7 +138,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">발리우드 뭄바이</h5>
                   <img src="{% static 'India.jpeg' %}" class="card-img-top scale" alt="발리우드 뭄바이">
                   <div>
@@ -145,7 +147,7 @@
                 </div>
               </div>
               <div class="col mr-2">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">열정의 리우데자네이루</h5>
                   <img src="{% static 'Rio.jpeg' %}" class="card-img-top scale" alt="열정의 리우데자네이루">
                   <div>
@@ -156,12 +158,13 @@
             </div>
           </div>
         </div>
-        <div class="swiper-slide">
-          <div class="m-4" style="padding-top: 50px; padding-bottom: 50px;">
-            <h3 class="my-2 text-center" style="">패키지 영화 추천</h3>
+        <div class="swiper-slide" style="background: -webkit-linear-gradient(to right, #141e30, #243b55); 
+        background: linear-gradient(to right, #141e30, #243b55);">
+          <div class="m-4" style="padding-top: 50px; padding-bottom: 50px;" >
+            <h3 class="my-2 text-center" style="color:#FFD700; font-weight:bold; padding-bottom:30px;">패키지 영화 추천</h3>
             <div class="row row-cols-2 row-cols-lg-4 g-4 mx-5" style="margin-top:10px;">
               <div class="col ml-2">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">끝나지 않은, 분노의 질주</h5>
                   <img src="{% static 'F&F.jpg' %}" height="" class="card-img-top mb-3 scale" alt="빛의 도시, 파리">
                   <a href="{% url 'movies:movie_detail' 133 %}" class="mb-1">분노의 질주: 더 맥시멈</a>
@@ -170,7 +173,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">Manners Maketh Man</h5>
                   <img src="{% static 'Kingsman.jpeg' %}" class="card-img-top mb-3 scale" alt="Big Apple, NY">
                   <a href="{% url 'movies:movie_detail' 158 %}" class="mb-1">킹스맨: 시크릿 에이전트</a>
@@ -179,20 +182,18 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">해리포터와 마법의 세계로</h5>
                   <img src="{% static 'HP.jpg' %}" class="card-img-top mb-3 scale" alt="발리우드 뭄바이">
                   <a href="{% url 'movies:movie_detail' 153 %}" class="mb-1">해리 포터와 마법사의 돌</a>
                   <a href="{% url 'movies:movie_detail' 154 %}" class="mb-1">해리 포터와 비밀의 방</a>
                   <a href="{% url 'movies:movie_detail' 155 %}" class="mb-1">해리 포터와 아즈카반의 죄수</a>
-                  <a href="{% url 'movies:movie_detail' 156 %}" class="mb-2">해리 포터와 불의 잔</a>
                 </div>
               </div>
               <div class="col mr-2">
-                <div class="card text-center h-100 img">
+                <div class="card main text-center h-100 img">
                   <h5 class="card-title my-4">우리가 사랑한 스파이, 007</h5>
                   <img src="{% static '007.jpg' %}" class="card-img-top mb-3 scale" alt="열정의 리우데자네이루">
-                  <a href="{% url 'movies:movie_detail' 105 %}" class="mb-1">007 언리미티드</a>
                   <a href="{% url 'movies:movie_detail' 127 %}" class="mb-1">007 퀸텀 오브 솔러스</a>        
                   <a href="{% url 'movies:movie_detail' 104 %}" class="mb-1">007 스카이폴</a>
                   <a href="{% url 'movies:movie_detail' 123 %}" class="mb-2">007 노 타임 투 다이</a>
@@ -225,5 +226,36 @@
       });
     </script>
   </body>
+
+  <style>
+  .main{
+    margin: auto;
+    margin-bottom: 80px;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0px 20px 100px rgba(0,0,0,0.1);
+  }
+  .scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.scale:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+.img {
+  overflow:hidden 
+}  
+.swiper-pagination-bullet-active {
+  background-color: #FFD700;
+}
+  </style>
 </html>
 

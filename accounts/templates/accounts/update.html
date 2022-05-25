@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center" style="margin-top: 50px; margin-bottom: 50px; min-width: 900px; max-width: 1500px;">
+{% comment %} <div class="text-center" style="margin-top: 50px; margin-bottom: 50px; min-width: 900px; max-width: 1500px;">
   <h1>회원정보 수정</h1>
 </div>
 <div class="mx-auto" style="min-width: 900px; max-width: 1500px; margin-top: 10px;">
@@ -10,5 +10,33 @@
     {{ form.as_p }}
     <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-primary" type="submit" value="회원정보 수정"></div>
   </form>
+</div> {% endcomment %}
+
+<div class="text-center" style="margin-top: 40px; margin-bottom: 40px;  ">
+  <h1 style="color:#FFD700; font-weight:bold;">회원정보 수정</h1>
 </div>
+<div class="main" style="text-align:center; position: relative;">
+  <div style="margin:auto; position: absolute; bottom:150px; right:15px;">
+    <form action="{% url 'accounts:update' %}" method="POST" class="mx-auto" style="width:800px;">
+      {% csrf_token %}
+      {{ form.as_p }}
+        <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-warning" type="submit" value="회원정보 수정"></div>
+    </form>
+  </div>  
+  <div class="text-center" style="margin:auto; position: absolute; bottom:10px; right:388px; ">
+    <button onclick="history.back()" class="btn btn-sm btn-secondary" style="">back</button>
+  </div>
+</div>
+
+<style>
+  .main{
+    margin: auto;
+    margin-bottom: 200px;
+    border-radius: 30px;
+    height: 530px;
+    width: 830px;
+    background: white;
+    box-shadow: 0px 20px 100px rgba(0,0,0,0.1);
+  }
+</style>
 {% endblock content %}
