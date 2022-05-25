@@ -4,6 +4,7 @@
 
 {% if movies %}
 <h1 class="p-5" style="text-align:center;">WELCOME TO {{ search }}</h1>
+<div id="movie-cards" class="mx-auto">
 <div class="row row-cols-1 row-cols-md-4" style="display:flex;">
 {% comment %} {% for movie in movies %}
   <div class="col text-center" style="" >
@@ -26,25 +27,26 @@
     <div class="head1" style="text-align:center; margin-top:20px;">
       <h6 style="text-align:center;">{{ movie.title }}</h6>
       <p>평점: {{ movie.vote_average }}⭐</p>
-      <a class="btn btn-primary btn-sm" href="{% url 'movies:movie_detail' movie.pk %}" style="">DETAIL</a>
+      <a class="btn btn-warning btn-sm" href="{% url 'movies:movie_detail' movie.pk %}" style="">DETAIL</a>
     </div>
   </div> 
 {% endfor %} 
 </div> 
+</div>
 
 <div style="text-align:center;">
 <div class="pagination" style="display:inline-block; text-align:center; margin:auto; white-space: nowrap; margin-top:40px; margin-bottom:80px;">
-  <span class="step-links " style="">
+  <span class="step-links mx-auto" style="">
     {% if movies.has_previous %}
-    <a href="?page=1&search={{ search }}">&laquo; first</a>
-    <a href="?page={{ movies.previous_page_number }}&search={{ search }}">previous</a>
+    {% comment %} <a href="?page=1&search={{ search }}">&laquo; first</a> {% endcomment %}
+    <a style="text-decoration: none; color: #FFD700; font-weight: bold;" href="?page={{ movies.previous_page_number }}&search={{ search }}"><</a>
     {% endif %}
-    <span class="current" style= "">
-      Page {{ movies.number }} of {{ movies.paginator.num_pages }}
+    <span class="current" style="color: #FFD700; font-weight: bold; margin: 15px">
+      {{ movies.number }} of {{ movies.paginator.num_pages }}
     </span>
     {% if movies.has_next %}
-    <a href="?page={{ movies.next_page_number }}&search={{ search }}">next</a>
-    <a href="?page={{ movies.paginator.num_pages }}&search={{ search }}">last &raquo;</a>
+    <a style="text-decoration: none; color: #FFD700; font-weight: bold;" href="?page={{ movies.next_page_number }}&search={{ search }}">></a>
+    {% comment %} <a href="?page={{ movies.paginator.num_pages }}&search={{ search }}">last &raquo;</a> {% endcomment %}
     {% endif %}
   </span>
 </div>
@@ -68,6 +70,18 @@
 </script>
 
 <style>
+  h1 {
+    color: #FFD700;
+    font-weight: bold;
+  }
+
+  #movie-cards{
+    margin: 20px 30px;
+    max-width: 1300px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .btn-hover {
     font-size: 16px;
     font-weight: 600;
