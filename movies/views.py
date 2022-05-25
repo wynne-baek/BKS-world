@@ -5,7 +5,7 @@ from .models import Movie
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def movie_home(request):
-    num = randint(1, 5)
+    num = randint(1, 9)
     context = {
         'num': num
     }
