@@ -16,27 +16,23 @@
 <body style="font-color:#ffd400; background: -webkit-linear-gradient(to right, #141e30, #243b55); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #141e30, #243b55);
 ">
-  <nav class="navbar bg-light container-fluid sticky-top" style="">
-    <div>
-      <a class="navbar-brand" href="{% url 'movies:movie_home' %}">
-        {% load static %}
-        <img src="{% static '422995.jpg' %}" alt="" width="30" height="30" class="d-inline-block align-text-top"> 방구석 세계여행
-      </a>
-    </div>
+{% load static %}
+  <nav class="navbar container-fluid sticky-top" style="background-color: #00ff0000;">
+    <img style="width: 150px; margin-left:30px;" src="{% static 'Logo.png' %}" alt="" >
     <div>
       {% if request.user.is_authenticated %}
-        <a class="btn" href="{% url 'movies:movie_home' %}">HOME</a>
-        <a class="btn" href="{% url 'community:review_list' %}">COMMUNITY</a>
-        <a class="btn" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
-        <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; white-space: nowrap;">
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'community:review_list' %}">COMMUNITY</a>
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'accounts:profile' user.username %}">MY PROFILE</a>
+        <form action="{% url 'accounts:logout' %}" method="POST" style="display: inline-block; white-space: nowrap; margin-right:30px;">
           {% csrf_token %}
-          <input  class="btn" type="submit" value="LOGOUT">
+          <input style="border: none; background-color: #00ff0000; color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px; " class="mx-3" type="submit" value="LOGOUT">
         </form>
       {% else %}
-        <a class="btn" href="{% url 'movies:movie_home' %}">HOME</a>
-        <a class="btn"  href="{% url 'community:review_list' %}">COMMUNITY</a>
-        <a class="btn"  href="{% url 'accounts:login' %}">LOGIN</a>
-        <a class="btn"  href="{% url 'accounts:signup' %}">SINGUP</a>
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;" href="{% url 'movies:movie_home' %}">HOME</a>
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'community:review_list' %}">COMMUNITY</a>
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:login' %}">LOGIN</a>
+        <a class="mx-3" style="color: #FFD700; font-weight:bold; text-decoration: none; font-size: 23px;"  href="{% url 'accounts:signup' %}">SIGN UP</a>
       {% endif %}
     </div>
   </nav>
@@ -55,13 +51,13 @@ background: linear-gradient(to right, #141e30, #243b55);
   {% endblock script %}
 
   <div class="wrap mb-0" style="">
-    <footer class="footer text-white text-center" style="height: 55px; background-color:#FFE4E1; position: relative;">
-      <p style="margin-bottom:0; font-size:12px;">200%</p>
+    <footer class="footer text-white text-center" style="height: 55px; background-color:#FEDE79; position: relative;">
+      <p style="margin-bottom:0; font-size:12px; color: #000080;">200%</p>
       <p style="margin-bottom:0; font-size:12px;">
-        <a href="" style="text-decoration-line: none;">Github_백경원</a>
-        <a href="" style="text-decoration-line: none; ">Github_이보나</a>
+        <a href="" style="text-decoration-line: none; color: #000080; font-weight: 600;">Github_백경원</a>
+        <a href="" style="text-decoration-line: none; color: #000080; font-weight: 600;">Github_이보나</a>
       </p>
-      <p style="margin-bottom:0; font-size:12px" >Copyright 2022 cocoder.All Rights Reversed.</p>
+      <p style="margin-bottom:0; font-size:12px;">Copyright 2022 cocoder.All Rights Reversed.</p>
     </footer>
   </div>
 </body>
