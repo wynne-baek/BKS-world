@@ -41,7 +41,7 @@
 <h3 class="text-center">WATCHED LIST</h3>
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-    {% for movie in user.watched_list.all %}
+    {% for movie in person.watched_list.all %}
     <div class="swiper-slide">
       <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}"/>
     </div>
