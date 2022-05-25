@@ -45,7 +45,7 @@
   <hr>
   {% comment %} 댓글 {% endcomment %}
   <div id="comment">
-  <h5 class="mb-3">댓글 <span class="text-primary">{{ comments|length }}</span></h5>
+  <h5 class="mb-3">댓글 <span class="text-warning fw-bold">{{ comments|length }}</span></h5>
   {% for comment in comments %}
       <span><a class="text-dark" id="comment-user" href="{% url 'accounts:profile' comment.user.username %}">{{ comment.user }}</a></span>
       <span class="text-black-50">  |  {{ comment.created_at }}</span>
@@ -76,7 +76,7 @@
     <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
   {% endif %}
   <div class="my-4" style="text-align:center;">
-  <a class="btn btn-primary" href="{% url 'community:review_list' %}">BACK</a>
+  <a class="btn btn-secondary" href="{% url 'community:review_list' %}">BACK</a>
   </div>
   </div>
 </div>
@@ -86,6 +86,7 @@
 <style>
   h1 {
     color: #FFD700;
+    font-weight: bold;
   }
 
   #review-user:link, #comment-user:link {
