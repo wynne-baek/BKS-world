@@ -12,7 +12,7 @@ class ReviewForm(forms.ModelForm):
             'title': forms.Textarea(attrs={'class': 'form-control my-2', 'rows': 1, 'style': 'width: 300px;'}),
             'movie_title': forms.Textarea(attrs={'class': 'form-control my-2', 'rows': 1, 'style': 'width: 300px;'}),
             'rate': forms.Select(choices=RATE_CHOICE),
-            'content': forms.Textarea(attrs={'class': 'form-control my-2', 'style': 'width: 680px;', 'rows': 10})
+            'content': forms.Textarea(attrs={'class': 'form-control my-2', 'style': 'width: 750px;', 'rows': 10})
         }
 
 

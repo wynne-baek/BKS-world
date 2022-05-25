@@ -4,14 +4,35 @@
 <div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
   <h1>Review Update</h1>
   </div>
-  <div style="width: 700px; margin-top: 10px;" class="mx-auto">
-  <form action="{% url 'community:review_update' review.pk %}" method="POST">
+  <div id="update-form" style="margin-top: 10px;" class="mx-auto mb-5">
+  <form style="margin-left: 10px;" action="{% url 'community:review_update' review.pk %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <div class="my-4" style="text-align:center;">
-      <input class="btn btn-primary" type="submit" value="SUBMIT">
+    <div id="buttons" class="my-4">
+      <input class="btn btn-warning" type="submit" value="SUBMIT">
       <a class="btn btn-secondary" href="">BACK</a>
     </div>
   </form>
   </div>
+
+<style>
+h1 {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+#update-form {
+  width: 800px;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+#buttons {
+  text-align:center;
+}
+
+input {
+  color: #000080;
+}
+</style>
 {% endblock content %}

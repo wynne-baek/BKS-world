@@ -5,11 +5,11 @@
   <h1 class="">COMMUNITY</h1>
 </div>
 {% if user.is_authenticated %}
-<div style="width: 190px " class="mx-auto">
-  <a class="btn btn-primary" href="{% url 'community:review_create'%}">CREATE NEW REVIEW</a>
+<div style="width: 190px " class="mx-auto mb-5">
+  <a class="btn btn-warning" href="{% url 'community:review_create'%}">CREATE NEW REVIEW</a>
 </div>
 {% endif %}
-
+<div id="review-box" class="mx-auto">
 <div id="ReviewList">
   <table style="width: 750px;" class="mt-3 mx-auto text-center table table-striped table-hover">
     <thead>
@@ -32,6 +32,7 @@
     </tbody>
   </table>
 </div>
+</div>
 
 
 
@@ -40,6 +41,22 @@
 
 {% comment %} style {% endcomment %}
 <style>
+  h1 {
+    color: #FFD700;
+    font-weight: bold;
+  }
+
+  #review-box {
+    background : white;
+    width : 800px;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 1200px;
+  }
+
+  th {
+    background : #FFD700;
+  }
   td > a {
     color: #000000;
     text-decoration: none;

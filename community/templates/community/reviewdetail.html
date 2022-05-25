@@ -2,15 +2,16 @@
 
 {% block content %}
 {% comment %} 제목, 작성자, 작성일, 수정일 {% endcomment %}
-<div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
-  <p>{{ review.movie_title }}</p>
-  <h1 class="">{{ review.title }}</h1>
-  <p><a href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
-  <div class="text-black-50">Written at | {{ review.created_at }}</div>
-  <div class="text-black-50">Updated at | {{ review.updated_at }}</div>
+<div class="text-center" style="padding-top: 50px; margin-bottom: 50px">
+  <p class="text-white-50">{{ review.movie_title }}</p>
+  <h1>{{ review.title }}</h1>
+  <p><a id="review-user" class="text-white" href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
+  <div class="text-white-50">Written at | {{ review.created_at }}</div>
+  <div class="text-white-50">Updated at | {{ review.updated_at }}</div>
 </div>
 
 {% comment %} 디테일 {% endcomment %}
+<div id="review-box" class="mx-auto mb-5">
 <div style="min-width: 700px; max-width: 1200px; margin-top: 10px;" class="mx-auto">
   {% comment %} 디테일 {% endcomment %}
   <div id="detail">
@@ -44,9 +45,9 @@
   <hr>
   {% comment %} 댓글 {% endcomment %}
   <div id="comment">
-  <h5>댓글 <span class="text-primary">{{ comments|length }}</span></h5>
+  <h5 class="mb-3">댓글 <span class="text-warning fw-bold">{{ comments|length }}</span></h5>
   {% for comment in comments %}
-      <span><a href="{% url 'accounts:profile' comment.user.username %}">{{ comment.user }}</a></span>
+      <span><a class="text-dark" id="comment-user" href="{% url 'accounts:profile' comment.user.username %}">{{ comment.user }}</a></span>
       <span class="text-black-50">  |  {{ comment.created_at }}</span>
       <p class="mt-2">{{ comment.content }}</p>
         {% if request.user == comment.user %}
@@ -69,19 +70,43 @@
     <form action="{% url 'community:review_comment_create' review.pk %}" method="POST">
       {% csrf_token %}
       {{ comment_form }}
-      <div style="text-align: right; margin-right: 10px;" ><input type="submit" value="WRITE"></div>
+      <div style="text-align: right;" ><input class="btn btn-warning btn-sm" type="submit" value="WRITE"></div>
     </form>
   {% else %}
     <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
   {% endif %}
   <div class="my-4" style="text-align:center;">
-  <a class="btn btn-primary" href="{% url 'community:review_list' %}">BACK</a>
+  <a class="btn btn-secondary" href="{% url 'community:review_list' %}">BACK</a>
   </div>
   </div>
+</div>
 </div>
 
 
 <style>
+  h1 {
+    color: #FFD700;
+    font-weight: bold;
+  }
+
+  #review-user:link, #comment-user:link {
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  #review-user:hover, #comment-user:hover {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  #review-box {
+    background : white;
+    width : 800px;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 1200px;
+  }
+
   #comment {
     margin-left: 10px;
   }

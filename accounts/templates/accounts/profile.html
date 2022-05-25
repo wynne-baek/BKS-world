@@ -3,7 +3,7 @@
 {% block content %}
 <div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
   <h1>{{ person.username }}님의 Profile</h1>
-  <div>
+  <div class="text-white-50">
     팔로잉 :
     <span id="following-count">
       {{ person.following.all|length }}
@@ -37,7 +37,7 @@
 
 </div>
 
-<div style="min-width: 700px; max-width: 1200px; margin-top: 10px; height: 100vh;" class="mx-auto">
+<div style="min-width: 700px; max-width: 1200px; margin-top: 10px;" class="mx-auto">
 <h3 class="text-center">WATCHED LIST</h3>
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
@@ -51,13 +51,14 @@
 </div>
 
 <hr>
-<h3 class="text-center my-5">MOVIE REVEIW</h3>
+<h3 class="text-center my-4">MOVIE REVIEW</h3>
+<div id="review-list" class="mx-auto mb-5">
   {% for review in person.review_set.all %}
     <h5><a class="text-decoration-none text-dark" href="{% url 'community:review_detail' review.pk %}">{{ review.title }}</a></h5>
     <p class="text-secondary">{{ review.content }}</p>
     <hr>
   {% endfor %}
-
+</div>
 
 </div>
 {% endblock %}
@@ -119,6 +120,19 @@ html, body {
   height: 100%;
     }
 
+h1, h3 {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+#review-list {
+  background : white;
+  width : 800px;
+  border-radius: 10px;
+  padding: 15px;
+  max-width: 1200px;
+}
+
 .swiper {
   width: 100%;
   padding-top: 50px;
@@ -136,6 +150,10 @@ html, body {
 .swiper-slide img {
   display: block;
   width: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FFD700;
 }
 </style>
 {% endblock script %}
