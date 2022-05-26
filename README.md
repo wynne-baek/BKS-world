@@ -39,21 +39,21 @@
 
 #### 메인 페이지 1 - 목적지 검색 :mag:
 
-![메인1](README.assets/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB1.png)
+![main1](README.assets/main1.png)
 
 - 도착지를 입력 후, 엔터 버튼을 누르면 검색결과로 이동합니다.
 - 새로고침 시, 배경이 랜덤하게 변경됩니다.
 
 #### 메인 페이지 2 - 여행지 추천 🗽
 
-![메인2](README.assets/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB2.png)
+![main2](README.assets/main2.png)
 
 - 떠나고 싶은 나라를 선택하지 못한 이용자에게 선택지를 제공 및 추천 합니다.
 - 'Go to ~' 버튼을 클릭하면 해당 도시를 배경으로 한 영화 리스트가 제공됩니다.
 
 #### 메인 페이지 3 - 패키지 추천 :gift:
 
-![메인3](README.assets/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB3.png)
+![main3](README.assets/main3.png)
 
 - 패키지 영화를 추천합니다.
 
@@ -63,14 +63,14 @@
 
 #### Movie List :card_file_box:
 
-![영화리스트](README.assets/%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%92%E1%85%AA%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.png)
+![movie_list](README.assets/movie_list.png)
 
 - 검색한 나라에 따라 해당 국가의 인사가 나타나게 구성되어 있습니다.
 - 페이지 당 12개의 영화가 보여지며, 페이지네이션을 활용해 앞 뒤 페이지로 이동할 수 있습니다.
 
 #### Movie Detail :movie_camera:
 
-![영화디테일](README.assets/%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%92%E1%85%AA%E1%84%83%E1%85%B5%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.png)
+![movie_detail](README.assets/movie_detail.png)
 
 - 영화 정보가 적힌 카드 형태로 구성되어 있습니다.
 - 이미 본 영화는 Watched 버튼을 누르면 profile에서 확인할 수 있습니다.
@@ -81,14 +81,14 @@
 
 #### Review List :notebook:
 
-![커뮤니티](README.assets/%E1%84%8F%E1%85%A5%E1%84%86%E1%85%B2%E1%84%82%E1%85%B5%E1%84%90%E1%85%B5.png)
+![community](README.assets/community.png)
 
 - 현재 작성된 리뷰가 table 형태로 구성되어 있습니다.
 - 각 리뷰의 제목을 누르면 해당 리뷰의 상세 페이지로 이동합니다.
 
 #### Review Detail :page_facing_up:
 
-![리뷰디테일](README.assets/%E1%84%85%E1%85%B5%E1%84%87%E1%85%B2%E1%84%83%E1%85%B5%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.png)
+![review_detail](README.assets/review_detail.png)
 
 - 영화제목, 리뷰제목, 작성자, 작성일, 수정일 / 평점, 상세 내용, 좋아요 버튼, 댓글, 댓글 작성 form 으로 구성되어 있습니다.
 - 하트 버튼을 누르면 새로고침 없이 POST 요청을 수행합니다.
@@ -96,13 +96,13 @@
 
 #### Review 작성 :black_nib:
 
-![리뷰작성](README.assets/%E1%84%85%E1%85%B5%E1%84%87%E1%85%B2%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC.png)
+![review_C](README.assets/review_C.png)
 
 - 리뷰 제목, 영화제목, 평점, 상세내용을 작성할 수 있는 form을 제공합니다.
 
 #### Review 수정
 
-![스크린샷 2022-05-26 오후 3.41.23](README.assets/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-05-26%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%203.41.23.png)
+![review_U](README.assets/review_U.png)
 
 - 작성한 리뷰를 수정할 수 있습니다.
 
@@ -112,32 +112,32 @@
 
 #### 회원가입
 
-![회원가입](README.assets/%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8.png)
+![signup](README.assets/signup.png)
 
 - 회원가입 form을 통해 가입할 수 있습니다.
 
 #### 로그인
 
-![로그인](README.assets/%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB.png)
+![login](README.assets/login.png)
 
 - 가입한 회원은 로그인 기능을 사용할 수 있습니다.
 
 #### 프로필 
 
-![프로필](README.assets/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5%E1%86%AF.png)
+![profile](README.assets/profile.png)
 
 - Movie Detail 페이지에서 watched 체크한 영화를 프로필에서 확인할 수 있습니다.
 - profile의 유저가 작성한 리뷰를 확인할 수 있습니다.
 
 #### 회원정보 수정
 
-![스크린샷 2022-05-26 오후 3.15.03](README.assets/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-05-26%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%203.15.03.png)
+![user_info](README.assets/user_info.png)
 
 - 회원 정보를 수정할 수 있습니다.
 
 #### 비밀번호 변경
 
-![스크린샷 2022-05-26 오후 3.15.16](README.assets/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-05-26%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%203.15.16.png)
+![change_password](README.assets/change_password.png)
 
 - 비밀번호를 변경할 수 있습니다.
 
