@@ -5,6 +5,7 @@ from django.views.decorators.http import require_GET, require_POST, require_http
 from .models import Review, Comment
 from .forms import ReviewForm, CommentForm
 
+@login_required
 @require_GET
 def review_list(request):
     reviews = Review.objects.order_by('-pk')
@@ -13,6 +14,7 @@ def review_list(request):
     }
     return render(request, 'community/reviewlist.html', context)
 
+@login_required
 @require_http_methods(['GET', 'POST'])
 def review_create(request):
     if request.method == 'POST':
@@ -29,6 +31,7 @@ def review_create(request):
     }
     return render(request, 'community/reviewcreate.html', context)
 
+@login_required
 @require_GET
 def review_detail(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
@@ -41,6 +44,7 @@ def review_detail(request, review_pk):
     }
     return render(request, 'community/reviewdetail.html', context)
 
+@login_required
 @require_POST
 def review_comment_create(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
@@ -58,6 +62,7 @@ def review_comment_create(request, review_pk):
     }
     return render(request, 'community/reviewdetail.html', context)
 
+@login_required
 @require_POST
 def review_like(request, review_pk):
     if request.user.is_authenticated:
@@ -76,6 +81,7 @@ def review_like(request, review_pk):
         return JsonResponse(context)
     return redirect('accounts:login')
 
+@login_required
 @require_POST
 def review_delete(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
@@ -84,6 +90,7 @@ def review_delete(request, review_pk):
             review.delete()
     return redirect('community:review_list')
 
+@login_required
 @require_POST
 def review_comment_delete(request, review_pk ,comment_pk):
     if request.user.is_authenticated:
