@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center" style="margin-top: 50px;">
+<div class="text-center" style="margin-top: 50px; text-shadow: 4px 2px 2px gray;">
   <h1 class="">DETAIL</h1>
 </div>
 <div class="card main" style="display:flex; align-items:center;">
@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-8 h-100 m3-5">
       <div class="card-body ml-3" >
-        <h3 class="movie-title" style="margin-bottom:15px;">{{ movie.title }}</h3>
+        <h3 class="movie-title" style="margin-bottom:15px; font-weight: bold;">{{ movie.title }}</h3>
         <h6 class="movie-year" style="font: size 3px;">{{ movie.release_date }}
         <div class="movie-ratings" style="float:right;">
           <span class="star">★</span>
@@ -22,9 +22,8 @@
       <div>
       <hr>
       <div class="movie-details" style="margin-bottom:2px;"><span class="">{{ movie.country }}</span></div>
-        <div class="movie-castcrew" style="margin-bottom:2px;"><span class="">{{ movie.popularity }}</span></div>
-        <div class="movie-castcrew" style="margin-bottom:2px;"><span class="">{{ movie.vote_count }}</span></div>
-        <div class="movie-castcrew" style="margin-bottom:2px;"><span class="">{% for genre in genres %}{{ genre.name }} | {% endfor %}</span></div>
+        <div class="movie-castcrew mt-2" style="margin-bottom:2px;"><span class=""> 평균 {{ movie.vote_average}}점 </span></div>
+        <div class="movie-castcrew mt-2" style="margin-bottom:2px;"><span class="">{% for genre in genres %}{{ genre.name }} | {% endfor %}</span></div>
       </div>
       <hr>
       <div class="movie-synopsis">{{ movie.overview }}</div>

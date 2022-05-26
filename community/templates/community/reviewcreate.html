@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center" style="margin-top: 50px; margin-bottom: 50px">
+<div class="text-center" style="margin-top: 50px; margin-bottom: 50px; text-shadow: 4px 2px 2px gray;">
 <h1>New Review</h1>
 </div>
 <div id="create-form" style="margin-top: 10px;" class="mx-auto mb-5">
@@ -9,7 +9,7 @@
   {% csrf_token %}
   {{ form.as_p }}
   <div id="buttons" class="my-4">
-    <input class="btn btn-warning" type="submit" value="SUBMIT">
+    <input class="btn btn-warning" type="submit" value="WRITE">
     <a class="btn btn-secondary" href="{% url 'community:review_list' %}">BACK</a>
   </div>
 </form>

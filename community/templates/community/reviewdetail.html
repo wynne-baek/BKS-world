@@ -2,9 +2,9 @@
 
 {% block content %}
 {% comment %} 제목, 작성자, 작성일, 수정일 {% endcomment %}
-<div class="text-center" style="padding-top: 50px; margin-bottom: 50px">
+<div class="text-center" style="padding-top: 50px; margin-bottom: 50px; ">
   <p class="text-white-50">{{ review.movie_title }}</p>
-  <h1>{{ review.title }}</h1>
+  <h1 style="text-shadow: 4px 2px 2px gray;">{{ review.title }}</h1>
   <p><a id="review-user" class="text-white" href="{% url 'accounts:profile' review.user.username %}">{{ review.user }}</a></p>
   <div class="text-white-50">Written at | {{ review.created_at }}</div>
   <div class="text-white-50">Updated at | {{ review.updated_at }}</div>
