@@ -6,7 +6,7 @@
 </div>
 <div class="main">
   <div class="mx-auto">
-    <form action="{% url 'accounts:login' %}" method="POST" style="margin-left:30px; padding-top:30px">
+    <form action="{% url 'accounts:signup' %}" method="POST" style="margin-left:30px; padding-top:30px">
       {% csrf_token %}
       <div class="mx-auto" style="">{{ form.as_p }}</div>
       <div class="my-4 mx-auto" style="text-align:center;"><input class="btn btn-warning" type="submit" value="SIGN UP" style=""></div>
