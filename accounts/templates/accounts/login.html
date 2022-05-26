@@ -5,16 +5,16 @@
   <h1 style="color:#FFD700; font-weight:bold;">Login</h1>
 </div>
 <div class="main" style="text-align:center; position: relative;">
-  <div style="position:absolute; top:8%; margin:70px;">
-    <form action="{% url 'accounts:login' %}" method="POST" class="text-center">
+  <div class="mx-auto">
+    <form action="{% url 'accounts:login' %}" method="POST" style="padding-top:30px">
       {% csrf_token %}
-      <div class="m-auto" style="">{{ form.as_p }}</div>
-      <div class="my-4 mx-auto" style=""><input class="btn btn-warning" type="submit" value="login" style=""></div>
+      <div class="mx-auto" style="">{{ form.as_p }}</div>
+      <div class="my-4 mx-auto" style=""><input class="btn btn-warning" type="submit" value="LOGIN" style=""></div>
     </form>
   </div>  
-  <div style="position:absolute; top:80%; right:28%;">
+  <div class="mx-auto" style="text-align:center; margin-top:100px;">
     <p>앗 아직 회원이 아니시군뇨!</p>
-    <a class="btn btn-sm btn-warning"  href="{% url 'accounts:signup' %}" style="">signup</a>
+    <a class="btn btn-sm btn-secondary"  href="{% url 'accounts:signup' %}" style="">SIGN UP</a>
   </div>
 </div>
 
@@ -25,8 +25,8 @@
   margin: auto;
   margin-bottom: 80px;
   border-radius: 30px;
-  height: 480px;
-  width: 430px;
+  height: 370px;
+  width: 730px;
   background: white;
   box-shadow: 0px 20px 100px rgba(0,0,0,0.1);
 }

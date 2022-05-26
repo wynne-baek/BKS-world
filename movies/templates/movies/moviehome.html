@@ -23,7 +23,8 @@
       body {
         position: relative;
         height: 100%;
-        
+        min-width: 1200px;
+        min-height: 750px;
       }
 
       body {
@@ -150,16 +151,16 @@
             <h3 class="my-2 text-center" style="color:#ffffff; font-weight:bold; padding-bottom:10px;">도시별 영화 추천</h3>
             <div class="row row-cols-2 row-cols-lg-4 g-4 mx-5" style="margin-top:10px;">
               <div class="col ml-2" style="height: 450px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">빛의 도시, 파리</h5>
-                  <img src="{% static 'paris.jpg' %}" height="" class="card-img-top scale" alt="빛의 도시, 파리">
+                  <img src="{% static 'paris.jpg' %}" class="card-img-top" alt="빛의 도시, 파리">
                   <div>
                     <a class="btn my-2" href="list/?search=프랑스">Go to Paris</a>
                   </div>
                 </div>
               </div>
               <div class="col" style="height: 450px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">Big Apple, NY</h5>
                   <img src="{% static 'NY.jpg' %}" class="card-img-top scale" alt="Big Apple, NY">
                   <div>
@@ -168,7 +169,7 @@
                 </div>
               </div>
               <div class="col" style="height: 450px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">발리우드 뭄바이</h5>
                   <img src="{% static 'India.jpeg' %}" class="card-img-top scale" alt="발리우드 뭄바이">
                   <div>
@@ -177,7 +178,7 @@
                 </div>
               </div>
               <div class="col mr-2" style="height: 450px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">열정의 리우데자네이루</h5>
                   <img src="{% static 'Rio.jpeg' %}" class="card-img-top scale" alt="열정의 리우데자네이루">
                   <div>
@@ -220,7 +221,7 @@
             <h3 class="my-2 text-center" style="color:#ffffff; font-weight:bold;">패키지 영화 추천</h3>
             <div class="row row-cols-2 row-cols-lg-4 g-4 mx-5" style="margin-top:10px;">
               <div class="col ml-2" style="height: 480px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">끝나지 않은, 분노의 질주</h5>
                   <img src="{% static 'F&F.jpg' %}" height="" class="card-img-top mb-2 scale" alt="빛의 도시, 파리">
                   <a class="movie-link" href="{% url 'movies:movie_detail' 133 %}" class="mb-1">분노의 질주: 더 맥시멈</a>
@@ -229,7 +230,7 @@
                 </div>
               </div>
               <div class="col" style="height: 480px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">Manners Maketh Man</h5>
                   <img src="{% static 'Kingsman.jpeg' %}" class="card-img-top mb-2 scale" alt="Big Apple, NY">
                   <a class="movie-link" href="{% url 'movies:movie_detail' 158 %}" class="mb-1">킹스맨: 시크릿 에이전트</a>
@@ -238,7 +239,7 @@
                 </div>
               </div>
               <div class="col" style="height: 480px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">해리포터와 마법의 세계로</h5>
                   <img src="{% static 'HP.jpg' %}" class="card-img-top mb-2 scale" alt="발리우드 뭄바이">
                   <a class="movie-link" href="{% url 'movies:movie_detail' 153 %}" class="mb-1">해리 포터와 마법사의 돌</a>
@@ -247,7 +248,7 @@
                 </div>
               </div>
               <div class="col mr-2" style="height: 480px;">
-                <div class="card main text-center h-100 img">
+                <div class="card main text-center h-100 img border-0">
                   <h5 class="card-title my-4">우리가 사랑한 스파이, 007</h5>
                   <img src="{% static '007.jpg' %}" class="card-img-top mb-2 scale" alt="열정의 리우데자네이루">
                   <a class="movie-link" href="{% url 'movies:movie_detail' 127 %}" class="mb-1">007 퀸텀 오브 솔러스</a>        

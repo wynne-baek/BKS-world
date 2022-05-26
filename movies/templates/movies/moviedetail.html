@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>movie detail</h1>
+<div class="text-center" style="margin-top: 50px;">
+  <h1 class="">DETAIL</h1>
+</div>
 <div class="card main" style="display:flex; align-items:center;">
   <div class="row g-0" style="align-items:center;">
     <div class="col-md-4">
       <img src="https://themoviedb.org/t/p/w600_and_h900_bestv2{{ movie.poster_path }}" class="img-fluid image-algin-start p-2" alt="" style=" width:500px; height:595px;border-radius: 30px 30px 30px 30px;" >
     </div>
-    <div class="col-md-8 h-100 m3-5" style="position:relative;">
+    <div class="col-md-8 h-100 m3-5">
       <div class="card-body ml-3" >
         <h3 class="movie-title" style="margin-bottom:15px;">{{ movie.title }}</h3>
         <h6 class="movie-year" style="font: size 3px;">{{ movie.release_date }}
@@ -81,11 +83,15 @@
     margin: auto;
     margin-bottom: 100px;
     margin-top: 150px;
-    border-radius: 30px;
+    border-radius: 20px;
     height: 600px;
-    width:1250px;
+    width: 1250px;
     background: white;
     box-shadow: 0px 20px 100px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #FFD700;
+    font-weight: bold;
   }
 </style>
 {% endblock script %}

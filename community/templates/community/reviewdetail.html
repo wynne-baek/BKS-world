@@ -18,16 +18,16 @@
   <p>평점: {{ review.rate }}</p>
   <p class="my-5">{{ review.content }}</p>
   {% if request.user == review.user %}
-  <a class="btn btn-outline-info btn-sm" href="{% url 'community:review_update' review.pk %}" style="float:left;" >수정</a>
+  <a class="btn btn-outline-warning btn-sm" href="{% url 'community:review_update' review.pk %}" style="float:left;" >수정</a>
     <form action="{% url 'community:review_delete' review.pk %}" method="POST">
       {% csrf_token %}
-      <input class="btn btn-outline-info btn-sm" type="submit" value="삭제" style=" margin-left:10px;">
+      <input class="btn btn-outline-secondary btn-sm" type="submit" value="삭제" style=" margin-left:10px;">
     </form>
   {% endif %}
   </div>
 
   {% comment %} 좋아요 버튼 {% endcomment %}
-
+  {% if request.user.is_authenticated %}
   <div id="container">
     <form style="margin-left: 10px;" id="like-form" data-id="{{ review.pk }}" class="d-inline">
       {% csrf_token %}
@@ -41,6 +41,7 @@
         {{ review.like_users.all|length }}  
       </div>
   </div>
+  {% endif %}
 
   <hr>
   {% comment %} 댓글 {% endcomment %}
@@ -54,7 +55,7 @@
         {% comment %} <a class="btn btn-outline-info btn-sm" href="{% url 'community:review_comment_update' comment.pk review.pk %}" style="float:left;" >수정</a> {% endcomment %}
           <form action="{% url 'community:review_comment_delete' review.pk comment.pk %}" method="POST">
             {% csrf_token %}
-            <input type="submit" value="삭제">
+            <input class="btn btn-secondary btn-sm mb-2" type="submit" value="삭제">
           </form>
         {% endif %}
 
